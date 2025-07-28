@@ -1,0 +1,500 @@
+/* Process Page Styles */
+
+.process-hero {
+    padding: 120px 0 80px;
+    background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+    text-align: center;
+}
+
+.process-hero__title {
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.process-hero__subtitle {
+    font-size: 1.5rem;
+    color: #1ed760;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* Process Overview Diagram */
+.process-overview {
+    padding: 80px 0;
+    background: #0a0a0a;
+}
+
+.process-diagram {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.process-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.flow-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #1ed760 0%, #1db954 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.icon-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.flow-step h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.flow-step p {
+    font-size: 1rem;
+    color: #1ed760;
+    font-weight: 500;
+}
+
+.flow-arrow {
+    font-size: 2rem;
+    color: #1ed760;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+/* Phase Cards */
+.process-phases {
+    padding: 100px 0;
+    background: #121212;
+}
+
+.phases-grid {
+    display: grid;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.phase-card {
+    background: #1a1a1a;
+    border-radius: 20px;
+    padding: 3rem;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.phase-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #1ed760 0%, #1db954 100%);
+}
+
+.phase-card--highlight {
+    border-color: #1ed760;
+    box-shadow: 0 8px 32px rgba(30, 215, 96, 0.1);
+}
+
+.phase-card--highlight::before {
+    height: 6px;
+    background: linear-gradient(90deg, #1ed760 0%, #1db954 50%, #1ed760 100%);
+}
+
+.phase-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.phase-number {
+    background: #1ed760;
+    color: #000;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.phase-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    flex: 1;
+    min-width: 200px;
+}
+
+.phase-duration {
+    background: rgba(30, 215, 96, 0.1);
+    color: #1ed760;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid rgba(30, 215, 96, 0.3);
+}
+
+.phase-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.phase-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.task-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(30, 215, 96, 0.1);
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.task-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.task-info p {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.phase-communication {
+    padding-top: 1.5rem;
+    border-top: 1px solid #333;
+}
+
+.comm-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(30, 215, 96, 0.1);
+    color: #1ed760;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid rgba(30, 215, 96, 0.3);
+}
+
+.comm-badge--priority {
+    background: rgba(30, 215, 96, 0.2);
+    animation: pulse 2s infinite;
+}
+
+.kakao-icon {
+    font-size: 1.1rem;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Communication Promise */
+.communication-promise {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #121212 100%);
+}
+
+.promise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.promise-card {
+    background: #1a1a1a;
+    padding: 2.5rem;
+    border-radius: 16px;
+    text-align: center;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+}
+
+.promise-card:hover {
+    border-color: #1ed760;
+    transform: translateY(-4px);
+}
+
+.promise-card--emergency {
+    border-color: #1ed760;
+    background: linear-gradient(135deg, #1a1a1a 0%, rgba(30, 215, 96, 0.05) 100%);
+}
+
+.promise-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.promise-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.promise-time {
+    font-size: 1.1rem;
+    color: #1ed760;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.promise-detail {
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
+/* Tools Section */
+.tools-section {
+    padding: 80px 0;
+    background: #121212;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.tool-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: #1a1a1a;
+    border-radius: 16px;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+}
+
+.tool-item:hover {
+    border-color: #1ed760;
+    transform: translateY(-2px);
+}
+
+.tool-logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tool-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.kakao-tool {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1ed760;
+    border-radius: 12px;
+}
+
+.tool-item h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.tool-item p {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* Process CTA */
+.process-cta {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #1ed760 0%, #1db954 100%);
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    background: #000;
+    color: #1ed760;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Section Titles */
+.section__title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section__subtitle {
+    font-size: 1.2rem;
+    color: #ccc;
+    text-align: center;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .process-hero__title {
+        font-size: 2.5rem;
+    }
+    
+    .process-hero__subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .process-flow {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .phase-card {
+        padding: 2rem;
+    }
+    
+    .phase-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .phase-title {
+        font-size: 1.5rem;
+    }
+    
+    .task-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .promise-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .phase-card {
+        padding: 1.5rem;
+    }
+    
+    .flow-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .icon-number {
+        font-size: 1.5rem;
+    }
+    
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section__title {
+        font-size: 2rem;
+    }
+}

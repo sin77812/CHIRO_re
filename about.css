@@ -1,0 +1,560 @@
+/* About Page Styles */
+
+.about-hero {
+    padding: 120px 0 100px;
+    background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+    text-align: center;
+}
+
+.about-hero__title {
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 3rem;
+    line-height: 1.2;
+}
+
+.about-hero__belief {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.belief-quote {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #1ed760;
+    font-style: italic;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+    position: relative;
+}
+
+.belief-quote::before,
+.belief-quote::after {
+    content: '"';
+    font-size: 3rem;
+    color: rgba(30, 215, 96, 0.3);
+    position: absolute;
+    top: -10px;
+}
+
+.belief-quote::before {
+    left: -40px;
+}
+
+.belief-quote::after {
+    right: -40px;
+}
+
+.belief-description {
+    font-size: 1.3rem;
+    color: #ccc;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Chiro Difference Section */
+.chiro-difference {
+    padding: 100px 0;
+    background: #0a0a0a;
+}
+
+.difference-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.difference-card {
+    background: #1a1a1a;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.difference-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #1ed760 0%, #1db954 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.difference-card:hover {
+    border-color: #1ed760;
+    transform: translateY(-8px);
+}
+
+.difference-card:hover::before {
+    opacity: 1;
+}
+
+.difference-card--highlight {
+    border-color: #1ed760;
+    background: linear-gradient(135deg, #1a1a1a 0%, rgba(30, 215, 96, 0.05) 100%);
+}
+
+.difference-card--highlight::before {
+    opacity: 1;
+}
+
+.difference-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.difference-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.difference-card p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+/* Our Team Section */
+.our-team {
+    padding: 100px 0;
+    background: #121212;
+}
+
+.team-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.team-roles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.role-card {
+    background: #1a1a1a;
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.role-card:hover {
+    border-color: #1ed760;
+    transform: translateY(-4px);
+}
+
+.role-icon {
+    margin-bottom: 1.5rem;
+}
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #1ed760 0%, #1db954 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto;
+    color: #000;
+}
+
+.role-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.role-card p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.role-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.skill-tag {
+    background: rgba(30, 215, 96, 0.1);
+    color: #1ed760;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(30, 215, 96, 0.3);
+}
+
+.team-philosophy {
+    text-align: center;
+}
+
+.philosophy-card {
+    background: linear-gradient(135deg, #1ed760 0%, #1db954 100%);
+    padding: 3rem;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.philosophy-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.philosophy-card p {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.8);
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Mission Statement Section */
+.mission-statement {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #121212 100%);
+}
+
+.mission-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mission-text h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+.mission-quote {
+    font-size: 1.8rem;
+    color: #1ed760;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+.mission-description {
+    font-size: 1.1rem;
+    color: #ccc;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.mission-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mission-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+}
+
+.stat-item {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    border-color: #1ed760;
+    transform: scale(1.05);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1ed760;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: #ccc;
+    font-weight: 500;
+}
+
+/* Values Section */
+.values-section {
+    padding: 100px 0;
+    background: #121212;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.value-card {
+    background: #1a1a1a;
+    padding: 2.5rem;
+    border-radius: 16px;
+    text-align: center;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.value-card:hover {
+    border-color: #1ed760;
+    transform: translateY(-4px);
+}
+
+.value-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.value-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.value-card p {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+/* About CTA Section */
+.about-cta {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #1ed760 0%, #1db954 100%);
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: #000;
+    color: #1ed760;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #000;
+    border: 2px solid #000;
+    padding: 14px 30px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #000;
+    color: #1ed760;
+    transform: translateY(-2px);
+}
+
+/* Section Titles */
+.section__title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section__subtitle {
+    font-size: 1.2rem;
+    color: #ccc;
+    text-align: center;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-hero__title {
+        font-size: 2.5rem;
+    }
+    
+    .belief-quote {
+        font-size: 1.5rem;
+    }
+    
+    .belief-quote::before,
+    .belief-quote::after {
+        display: none;
+    }
+    
+    .belief-description {
+        font-size: 1.1rem;
+    }
+    
+    .difference-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .team-roles {
+        grid-template-columns: 1fr;
+    }
+    
+    .mission-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .mission-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        padding: 1.5rem 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-hero {
+        padding: 100px 0 80px;
+    }
+    
+    .difference-card,
+    .role-card,
+    .value-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .philosophy-card {
+        padding: 2rem;
+    }
+    
+    .mission-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section__title {
+        font-size: 2rem;
+    }
+    
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Animation classes */
+.animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Loading animation */
+.loaded .difference-card,
+.loaded .role-card,
+.loaded .value-card,
+.loaded .stat-item {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,71 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node.js dependencies (if added later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs (if build system is added)
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Log files
+*.log
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Backup files
+*.backup
+*.bak
+
+# Local development files
+local/
+*.local
+
+# Images directory (uncomment if you want to ignore image uploads)
+# images/
+# assets/images/
+
+# CSS/JS minified files (if using build tools)
+*.min.css
+*.min.js
+
+# Source maps (if generated)
+*.map
