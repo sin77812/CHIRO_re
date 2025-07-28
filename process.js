@@ -14,11 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeToolEffects();
 });
 
-// Scroll Animations
+// Scroll Animations - Faster and smoother
 function initializeScrollAnimations() {
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.05, // Trigger earlier
+        rootMargin: '0px 0px -20px 0px' // Less margin for faster trigger
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -29,13 +29,13 @@ function initializeScrollAnimations() {
         });
     }, observerOptions);
 
-    // Observe elements for animation
+    // Observe elements for animation with faster transitions
     const animatedElements = document.querySelectorAll('.phase-card, .promise-card, .tool-item, .flow-step');
     
     animatedElements.forEach((element, index) => {
         element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = `all 0.6s ease ${index * 0.1}s`;
+        element.style.transform = 'translateY(20px)'; // Smaller distance
+        element.style.transition = `all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.05}s`; // Faster, smoother
         
         observer.observe(element);
     });
@@ -208,18 +208,20 @@ function initializeProgressIndicator() {
             if (index <= currentStep) {
                 icon.style.background = 'linear-gradient(135deg, #1ed760 0%, #1db954 100%)';
                 icon.style.transform = 'scale(1.1)';
+                icon.style.transition = 'all 0.4s ease';
             } else {
                 icon.style.background = '#333';
                 icon.style.transform = 'scale(1)';
+                icon.style.transition = 'all 0.4s ease';
             }
         });
     };
     
-    // Auto-advance progress every 3 seconds
+    // Auto-advance progress every 1.5 seconds (faster)
     setInterval(() => {
         currentStep = (currentStep + 1) % processSteps.length;
         updateProgress();
-    }, 3000);
+    }, 1500);
     
     updateProgress();
 }

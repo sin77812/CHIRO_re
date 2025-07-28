@@ -164,10 +164,10 @@ function initializeDemoButtons() {
     });
 }
 
-// Intersection Observer for animations
+// Intersection Observer for animations - Faster
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.05, // Trigger earlier
+    rootMargin: '0px 0px -20px 0px' // Less margin
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -179,14 +179,14 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all case cards for scroll animations
+// Observe all case cards for scroll animations - Faster transitions
 document.addEventListener('DOMContentLoaded', function() {
     const caseCards = document.querySelectorAll('.case-card');
     
-    caseCards.forEach(card => {
+    caseCards.forEach((card, index) => {
         card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'all 0.6s ease';
+        card.style.transform = 'translateY(20px)'; // Smaller distance
+        card.style.transition = `all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.03}s`; // Faster
         observer.observe(card);
     });
 });

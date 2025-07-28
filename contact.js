@@ -237,11 +237,11 @@ function initializeContactOptions() {
     }
 }
 
-// Scroll Animations
+// Scroll Animations - Faster and smoother
 function initializeScrollAnimations() {
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.05, // Trigger earlier
+        rootMargin: '0px 0px -20px 0px' // Less margin
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -252,15 +252,15 @@ function initializeScrollAnimations() {
         });
     }, observerOptions);
 
-    // Observe elements for animation
+    // Observe elements for animation - Faster transitions
     const animatedElements = document.querySelectorAll(
         '.contact-form-section, .instant-contact, .faq-item'
     );
     
     animatedElements.forEach((element, index) => {
         element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = `all 0.6s ease ${index * 0.1}s`;
+        element.style.transform = 'translateY(20px)'; // Smaller distance
+        element.style.transition = `all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.05}s`; // Faster
         
         observer.observe(element);
     });

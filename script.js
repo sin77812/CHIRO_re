@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Intersection Observer for scroll animations
+    // Intersection Observer for scroll animations - Faster
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.05, // Trigger earlier
+        rootMargin: '0px 0px -20px 0px' // Less margin
     };
     
     const observer = new IntersectionObserver(function(entries) {
@@ -50,13 +50,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
     
-    // Add animation classes to elements
+    // Add animation classes to elements - Faster transitions
     const animatedElements = document.querySelectorAll('.feature-card, .stat-card, .portfolio-item');
     
-    animatedElements.forEach(element => {
+    animatedElements.forEach((element, index) => {
         element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        element.style.transform = 'translateY(20px)'; // Smaller distance
+        element.style.transition = `all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.05}s`; // Faster
         observer.observe(element);
     });
     
@@ -103,6 +103,115 @@ document.addEventListener('DOMContentLoaded', function() {
             this.appendChild(ripple);
             
             setTimeout(() => ripple.remove(), 600);
+        });
+    }
+    
+    // Premium Hero Animations
+    initializeHeroAnimations();
+    initializeParallaxEffect();
+});
+
+// Hero Word Rotation Animation
+function initializeHeroAnimations() {
+    const words = document.querySelectorAll('.rotating-words .word');
+    const rotationInterval = 3500; // 3.5 seconds
+    let currentIndex = 0;
+    
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion || words.length <= 1) {
+        return; // Skip animation if reduced motion is preferred or no words to rotate
+    }
+    
+    function rotateWords() {
+        // Fade out current word
+        if (words[currentIndex]) {
+            words[currentIndex].classList.remove('active');
+            words[currentIndex].classList.add('fade-out');
+        }
+        
+        // Move to next word
+        currentIndex = (currentIndex + 1) % words.length;
+        
+        // Fade in next word after a short delay
+        setTimeout(() => {
+            // Remove fade-out class from previous word
+            words.forEach(word => word.classList.remove('fade-out'));
+            
+            // Activate new word
+            if (words[currentIndex]) {
+                words[currentIndex].classList.add('active');
+            }
+        }, 300);
+    }
+    
+    // Start the rotation
+    if (words.length > 1) {
+        setInterval(rotateWords, rotationInterval);
+    }
+}
+
+// Parallax Effect for Hero Section
+function initializeParallaxEffect() {
+    const hero = document.querySelector('.hero');
+    const heroContent = document.querySelector('.hero__content');
+    const heroBackground = document.querySelector('.hero__background');
+    
+    if (!hero || !heroContent || !heroBackground) return;
+    
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+    
+    let ticking = false;
+    
+    function updateParallax() {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        const backgroundRate = scrolled * -0.2;
+        
+        // Only apply parallax if we're in the hero section
+        if (scrolled < window.innerHeight) {
+            heroContent.style.transform = `translateY(${rate}px)`;
+            heroBackground.style.transform = `translateY(${backgroundRate}px) scale(1.1)`;
+        }
+        
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick, { passive: true });
+}
+
+// Enhanced Brand Name Interaction
+document.addEventListener('DOMContentLoaded', function() {
+    const brandName = document.querySelector('.brand-name');
+    
+    if (brandName) {
+        // Add enhanced hover effect with mouse position tracking
+        brandName.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const deltaX = (x - centerX) / centerX;
+            const deltaY = (y - centerY) / centerY;
+            
+            this.style.transform = `scale(1.05) rotateX(${deltaY * 5}deg) rotateY(${deltaX * 5}deg)`;
+        });
+        
+        brandName.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotateX(0deg) rotateY(0deg)';
         });
     }
     
