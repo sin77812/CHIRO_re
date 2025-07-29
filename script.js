@@ -35,6 +35,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Counter Animation with Intersection Observer
+    const counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const numbers = target.querySelectorAll('.stat-number[data-target], .number[data-target]');
+                
+                numbers.forEach((number, index) => {
+                    const targetValue = parseInt(number.getAttribute('data-target'));
+                    animateCounter(number, targetValue, index * 500); // 0.5s delay between counters
+                });
+                
+                counterObserver.unobserve(target);
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    // Observe sections with counters
+    const statsSection = document.querySelector('.our-impact');
+    const trustBadges = document.querySelector('.trust-badges');
+    if (statsSection) counterObserver.observe(statsSection);
+    if (trustBadges) counterObserver.observe(trustBadges);
+    
     // Intersection Observer for scroll animations - Faster
     const observerOptions = {
         threshold: 0.05, // Trigger earlier
@@ -292,3 +315,23 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Counter Animation Function
+function animateCounter(element, target, delay = 0) {
+    setTimeout(() => {
+        let current = 0;
+        const increment = target / 60; // 60 frames for smooth animation
+        const duration = 2000; // 2 seconds
+        const stepTime = duration / 60;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                element.textContent = target;
+                clearInterval(timer);
+            } else {
+                element.textContent = Math.floor(current);
+            }
+        }, stepTime);
+    }, delay);
+}
