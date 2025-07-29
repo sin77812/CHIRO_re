@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- 스크롤 진행 바 -->
+    <div class="scroll-progress">
+        <div class="progress-bar"></div>
+    </div>
     <header class="header">
         <nav class="nav">
             <div class="nav__logo">
@@ -26,7 +30,7 @@
         <section id="home" class="hero">
             <div class="hero__background"></div>
             <div class="hero__content">
-                <h1 class="hero__title">오래된 웹사이트<br>새 시대의 옷을 입다</h1>
+                <h1 class="hero__title">오래된 웹사이트<br>[<span class="morphing-word" id="morphingText">새 시대의</span>] 옷을 입다</h1>
                 <p class="hero__subtitle">
                     <span class="brand-name">Chiro</span>는 중소기업의 
                     <span class="rotating-words">
@@ -60,6 +64,9 @@
             </div>
         </section>
 
+        <!-- 섹션 구분선 -->
+        <div class="section-divider"></div>
+
         <section class="why-chiro">
             <div class="container">
                 <h2 class="section__title">Why Chiro?</h2>
@@ -80,6 +87,9 @@
                 </div>
             </div>
         </section>
+
+        <!-- 섹션 구분선 -->
+        <div class="section-divider"></div>
 
         <section class="our-impact">
             <div class="container">
@@ -102,20 +112,37 @@
             </div>
         </section>
 
+        <!-- 섹션 구분선 -->
+        <div class="section-divider"></div>
+
         <section class="portfolio-preview">
             <div class="container">
                 <h2 class="section__title">Portfolio Preview</h2>
                 <p class="section__subtitle">실제 작업물 미리보기</p>
                 <div class="portfolio-grid">
-                    <div class="portfolio-item">
-                        <div class="portfolio-image"></div>
-                        <h3>OO 제조업체</h3>
-                        <p>방문자 +180% 달성</p>
+                    <div class="portfolio-card card-primary">
+                        <div class="card-header">
+                            <h3>OO 제조업체</h3>
+                            <span class="project-type">브랜드 현대화</span>
+                        </div>
+                        <div class="card-content">
+                            <p>시대에 뒤떨어진 제조업체 웹사이트를 현대적이고 전문적인 디자인으로 완전히 재탄생</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="result-badge success">방문자 +180%</span>
+                        </div>
                     </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-image"></div>
-                        <h3>XX 병원</h3>
-                        <p>문의 +240% 증가</p>
+                    <div class="portfolio-card card-secondary">
+                        <div class="card-header">
+                            <h3>XX 병원</h3>
+                            <span class="project-type">UX/UI 개선</span>
+                        </div>
+                        <div class="card-content">
+                            <p>환자 중심의 직관적인 인터페이스와 예약 시스템을 통해 사용자 경험 혁신</p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="result-badge premium">문의 +240%</span>
+                        </div>
                     </div>
                 </div>
                 <a href="portfolio.html" class="portfolio__cta">전체 포트폴리오 보기</a>

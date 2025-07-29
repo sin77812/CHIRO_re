@@ -175,7 +175,7 @@ function initializeHeroAnimations() {
     }
 }
 
-// Parallax Effect for Hero Section
+// Premium Parallax Effect for Hero Section
 function initializeParallaxEffect() {
     const hero = document.querySelector('.hero');
     const heroContent = document.querySelector('.hero__content');
@@ -189,15 +189,44 @@ function initializeParallaxEffect() {
     
     let ticking = false;
     
-    function updateParallax() {
+    // Mouse parallax effect
+    function handleMouseMove(e) {
+        if (prefersReducedMotion) return;
+        
+        const { clientX, clientY } = e;
+        const { innerWidth, innerHeight } = window;
+        
+        // Calculate mouse position as percentage
+        const xPercent = (clientX / innerWidth - 0.5) * 2; // -1 to 1
+        const yPercent = (clientY / innerHeight - 0.5) * 2; // -1 to 1
+        
+        // Apply subtle parallax (max 5px movement)
+        const moveX = xPercent * 3;
+        const moveY = yPercent * 3;
+        
+        heroBackground.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    }
+    
+    // Scroll parallax effect
+    function updateScrollParallax() {
         const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
-        const backgroundRate = scrolled * -0.2;
+        const rate = scrolled * -0.3;
+        const backgroundRate = scrolled * -0.1;
         
         // Only apply parallax if we're in the hero section
         if (scrolled < window.innerHeight) {
             heroContent.style.transform = `translateY(${rate}px)`;
-            heroBackground.style.transform = `translateY(${backgroundRate}px) scale(1.1)`;
+            // Blend with mouse parallax
+            const currentTransform = heroBackground.style.transform || 'translate(0px, 0px)';
+            const translateMatch = currentTransform.match(/translate\(([^)]+)\)/);
+            
+            if (translateMatch) {
+                const [, coords] = translateMatch;
+                const [x] = coords.split(',').map(s => s.trim());
+                heroBackground.style.transform = `${currentTransform.replace(/translate\([^)]+\)/, `translate(${x}, ${backgroundRate}px)`)}`;
+            } else {
+                heroBackground.style.transform = `translateY(${backgroundRate}px)`;
+            }
         }
         
         ticking = false;
@@ -205,12 +234,23 @@ function initializeParallaxEffect() {
     
     function requestTick() {
         if (!ticking) {
-            requestAnimationFrame(updateParallax);
+            requestAnimationFrame(updateScrollParallax);
             ticking = true;
         }
     }
     
+    // Add mouse parallax
+    hero.addEventListener('mousemove', handleMouseMove, { passive: true });
+    
+    // Add scroll parallax
     window.addEventListener('scroll', requestTick, { passive: true });
+    
+    // Cleanup on leave
+    hero.addEventListener('mouseleave', () => {
+        if (!prefersReducedMotion) {
+            heroBackground.style.transform = 'translate(0px, 0px)';
+        }
+    });
 }
 
 // Enhanced Brand Name Interaction
@@ -335,3 +375,101 @@ function animateCounter(element, target, delay = 0) {
         }, stepTime);
     }, delay);
 }
+
+// Word Morphing Animation Function - Simple Version
+function initializeMorphingWord() {
+    const morphingElement = document.getElementById('morphingText');
+    if (!morphingElement) return;
+
+    const words = ['새 시대의', '현대적인', '트렌디한', '미래의', '세련된'];
+    let currentIndex = 0;
+    let morphingTimer;
+
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function changeWord() {
+        // Fade out current word
+        morphingElement.classList.add('fade-out');
+        
+        setTimeout(() => {
+            // Change to next word when fully faded out
+            currentIndex = (currentIndex + 1) % words.length;
+            morphingElement.textContent = words[currentIndex];
+            
+            // Remove fade-out and add fade-in
+            morphingElement.classList.remove('fade-out');
+            morphingElement.classList.add('fade-in');
+            
+            setTimeout(() => {
+                // Complete fade-in
+                morphingElement.classList.remove('fade-in');
+            }, 50);
+        }, 200);
+    }
+
+    // Start morphing animation
+    function startMorphing() {
+        const interval = prefersReducedMotion ? 4000 : 3000;
+        morphingTimer = setInterval(changeWord, interval);
+    }
+
+    // Start animation 2 seconds after page load
+    setTimeout(() => {
+        startMorphing();
+    }, 2000);
+
+    // Cleanup function for memory management
+    return function cleanup() {
+        if (morphingTimer) {
+            clearInterval(morphingTimer);
+            morphingTimer = null;
+        }
+    };
+}
+
+// 스크롤 진행 바 기능
+function initializeScrollProgress() {
+    const progressBar = document.querySelector('.progress-bar');
+    if (!progressBar) return;
+
+    let ticking = false;
+
+    function updateScrollProgress() {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        
+        progressBar.style.width = Math.min(scrollPercent, 100) + '%';
+        ticking = false;
+    }
+
+    function onScroll() {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollProgress);
+            ticking = true;
+        }
+    }
+
+    // 초기 진행률 설정
+    updateScrollProgress();
+    
+    // 스크롤 이벤트 리스너 추가 (패시브 모드)
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    // Cleanup function
+    return function cleanup() {
+        window.removeEventListener('scroll', onScroll);
+    };
+}
+
+// Initialize all animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize existing animations
+    const morphingCleanup = initializeMorphingWord();
+    const scrollProgressCleanup = initializeScrollProgress();
+    
+    // Store cleanup functions
+    window.morphingCleanup = morphingCleanup;
+    window.scrollProgressCleanup = scrollProgressCleanup;
+});
