@@ -6,6 +6,7 @@
     <title>Contact - Chiro</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <header class="header">
@@ -27,207 +28,135 @@
         <section class="contact-hero">
             <div class="container">
                 <h1 class="contact-hero__title">프로젝트 시작하기</h1>
-                <p class="contact-hero__subtitle">무료 상담으로 여러분의 아이디어를 현실로 만들어보세요</p>
+                <p class="contact-hero__subtitle">10분 내 응답으로 빠른 상담을 약속드립니다</p>
             </div>
         </section>
 
-        <section class="contact-main">
+        <!-- 1순위: 카카오톡 메인 CTA -->
+        <section class="kakao-contact-main">
             <div class="container">
-                <div class="contact-grid">
-                    <!-- 상담 신청 폼 -->
-                    <div class="contact-form-section">
-                        <div class="form-header">
-                            <h2>무료 상담 신청하기</h2>
-                            <p>24시간 내 연락드려 프로젝트를 구체적으로 상담해드립니다</p>
-                        </div>
-                        
-                        <form class="consultation-form" id="consultationForm">
-                            <div class="form-group">
-                                <label for="companyName">회사명 *</label>
-                                <input type="text" id="companyName" name="companyName" required placeholder="회사명을 입력해주세요">
+                <div class="kakao-card">
+                    <div class="kakao-icon">💬</div>
+                    <h2>카카오톡 즉시 상담</h2>
+                    <p><strong>평균 응답시간 8분</strong> | 평일 9시-6시</p>
+                    <div class="kakao-buttons">
+                        <a href="#" class="btn-kakao-primary" id="kakaoBtn">카카오톡 상담하기</a>
+                        <div class="qr-code">
+                            <div class="qr-placeholder">
+                                <i class="fas fa-qrcode"></i>
+                                <span>QR코드</span>
                             </div>
-                            
-                            <div class="form-group">
-                                <label for="contactName">담당자명 *</label>
-                                <input type="text" id="contactName" name="contactName" required placeholder="담당자명을 입력해주세요">
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="phone">연락처 *</label>
-                                    <input type="tel" id="phone" name="phone" required placeholder="010-0000-0000">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="email">이메일 *</label>
-                                    <input type="email" id="email" name="email" required placeholder="example@company.com">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="currentWebsite">현재 홈페이지 URL</label>
-                                <input type="url" id="currentWebsite" name="currentWebsite" placeholder="https://example.com (있는 경우만)">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="projectDescription">프로젝트 간단 설명 *</label>
-                                <textarea id="projectDescription" name="projectDescription" required 
-                                    placeholder="어떤 홈페이지를 원하시는지, 중요하게 생각하는 기능이나 디자인 등을 자유롭게 작성해주세요."></textarea>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="launchDate">희망 런칭 시기 *</label>
-                                <select id="launchDate" name="launchDate" required>
-                                    <option value="">선택해주세요</option>
-                                    <option value="urgent">긴급 (1주일 내)</option>
-                                    <option value="2weeks">2주 내</option>
-                                    <option value="1month">1개월 내</option>
-                                    <option value="flexible">일정 협의 가능</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-submit">
-                                <button type="submit" class="submit-btn">
-                                    <span class="btn-text">무료 상담 신청하기</span>
-                                    <span class="btn-loading">처리 중...</span>
-                                </button>
-                                <p class="form-note">* 개인정보는 상담 목적으로만 사용되며, 상담 완료 후 안전하게 삭제됩니다.</p>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- 즉시 소통 옵션 -->
-                    <div class="instant-contact">
-                        <h3>즉시 소통 옵션</h3>
-                        <p>지금 바로 상담받고 싶으시다면</p>
-                        
-                        <div class="contact-options">
-                            <div class="contact-option">
-                                <div class="option-icon">💬</div>
-                                <div class="option-content">
-                                    <h4>카카오톡 채널</h4>
-                                    <p>가장 빠른 상담 방법</p>
-                                    <div class="kakao-contact">
-                                        <div class="qr-code">
-                                            <div class="qr-placeholder">QR 코드</div>
-                                            <p>QR코드 스캔</p>
-                                        </div>
-                                        <div class="kakao-buttons">
-                                            <button class="kakao-btn">카카오톡 상담</button>
-                                            <button class="kakao-btn-mobile">클릭 투 챗</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-option">
-                                <div class="option-icon">📞</div>
-                                <div class="option-content">
-                                    <h4>전화 상담</h4>
-                                    <p>평일 9-6시 즉시 연결</p>
-                                    <div class="phone-contact">
-                                        <a href="tel:02-1234-5678" class="phone-number">02-1234-5678</a>
-                                        <button class="call-btn">지금 전화하기</button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-option">
-                                <div class="option-icon">🎥</div>
-                                <div class="option-content">
-                                    <h4>화상 미팅</h4>
-                                    <p>구글미트/줌 30분 무료 상담</p>
-                                    <div class="meeting-contact">
-                                        <button class="meeting-btn">미팅 예약하기</button>
-                                        <div class="calendar-widget">
-                                            <p>📅 캘린더에서 편한 시간 선택</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <span>QR코드로 빠른 연결</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="faq-section">
+        <!-- 2순위: 프로젝트 타입 선택 폼 -->
+        <section class="project-inquiry-form">
             <div class="container">
-                <h2 class="section__title">자주 묻는 질문</h2>
-                <p class="section__subtitle">궁금한 점들을 미리 확인해보세요</p>
-                
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Q: 작업 기간은 얼마나 걸리나요?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>일반적으로 7-10일입니다. 복잡한 기능이 있으면 최대 14일까지 소요됩니다. 프로젝트 규모와 요구사항에 따라 정확한 일정을 상담 시 안내해드립니다.</p>
+                <h2 class="section__title">프로젝트 유형 선택</h2>
+                <form class="inquiry-form" id="inquiryForm">
+                    <div class="project-types">
+                        <label class="project-type-card">
+                            <input type="radio" name="project-type" value="manufacturing">
+                            <div class="card-content">
+                                <i class="fas fa-industry"></i>
+                                <h3>제조업체</h3>
+                                <p>제품 소개 및 회사 신뢰도 강화</p>
+                            </div>
+                        </label>
+                        
+                        <label class="project-type-card">
+                            <input type="radio" name="project-type" value="service">
+                            <div class="card-content">
+                                <i class="fas fa-handshake"></i>
+                                <h3>서비스업</h3>
+                                <p>고객 경험 개선 및 브랜드 강화</p>
+                            </div>
+                        </label>
+                        
+                        <label class="project-type-card">
+                            <input type="radio" name="project-type" value="restaurant">
+                            <div class="card-content">
+                                <i class="fas fa-utensils"></i>
+                                <h3>카페/음식점</h3>
+                                <p>매력적인 메뉴 및 분위기 전달</p>
+                            </div>
+                        </label>
+                        
+                        <label class="project-type-card">
+                            <input type="radio" name="project-type" value="medical">
+                            <div class="card-content">
+                                <i class="fas fa-heartbeat"></i>
+                                <h3>병원/의료</h3>
+                                <p>신뢰감 있는 전문적 이미지</p>
+                            </div>
+                        </label>
+                        
+                        <label class="project-type-card">
+                            <input type="radio" name="project-type" value="other">
+                            <div class="card-content">
+                                <i class="fas fa-ellipsis-h"></i>
+                                <h3>기타</h3>
+                                <p>상담을 통해 맞춤 제안</p>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="form-fields" id="formFields">
+                        <input type="text" name="company" placeholder="회사명" required>
+                        <input type="text" name="name" placeholder="담당자명" required>
+                        <input type="tel" name="phone" placeholder="연락처" required>
+                        <input type="email" name="email" placeholder="이메일" required>
+                        <input type="url" name="current-site" placeholder="현재 홈페이지 URL (있는 경우)">
+                        <textarea name="message" placeholder="프로젝트 간단 설명"></textarea>
+                        
+                        <div class="timeline-select">
+                            <label>희망 런칭 시기:</label>
+                            <select name="timeline">
+                                <option value="">선택해주세요</option>
+                                <option value="urgent">2주 이내 (급함)</option>
+                                <option value="normal">1달 이내</option>
+                                <option value="flexible">2달 이내</option>
+                                <option value="planning">계획 단계</option>
+                            </select>
                         </div>
                     </div>
                     
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Q: 수정은 몇 번까지 가능한가요?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>무제한입니다. 만족하실 때까지 수정해드립니다. 다만 프로젝트 방향성이 완전히 바뀌는 대규모 수정의 경우 별도 협의가 필요할 수 있습니다.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Q: 유지보수는 어떻게 되나요?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>런칭 후에도 지속적으로 지원해드립니다. 기술적 문제는 언제든 연락주세요. 호스팅, 도메인, 추가 기능 개발 등 모든 부분에서 도움을 드립니다.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Q: 기존 홈페이지가 있어도 가능한가요?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>물론입니다. 기존 콘텐츠를 활용해서 완전히 새롭게 만들어드립니다. 기존 홈페이지의 장점은 살리고, 문제점은 개선하여 더욱 효과적인 사이트로 제작합니다.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Q: 비용은 어떻게 되나요?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>프로젝트 규모와 요구사항에 따라 달라집니다. 무료 상담을 통해 정확한 견적을 제공해드리며, 중소기업에 적합한 합리적인 가격으로 제안합니다.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Q: 모바일 반응형도 포함되나요?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>네, 모든 프로젝트에 모바일 반응형이 기본 포함됩니다. PC, 태블릿, 모바일 모든 기기에서 완벽하게 작동하도록 제작합니다.</p>
-                        </div>
-                    </div>
-                </div>
+                    <button type="submit" class="btn-submit">
+                        <span class="btn-text">무료 상담 신청하기</span>
+                        <span class="btn-loading">처리 중...</span>
+                    </button>
+                </form>
             </div>
         </section>
 
-        <section class="contact-cta">
+        <!-- 3순위: 기타 연락 방법 -->
+        <section class="alternative-contact">
             <div class="container">
-                <div class="cta-content">
-                    <h2>아직 궁금한 점이 있으신가요?</h2>
-                    <p>언제든 편하게 연락주세요. 친절하게 상담해드립니다.</p>
-                    <div class="cta-buttons">
-                        <button class="btn-primary" onclick="scrollToForm()">상담 신청하기</button>
-                        <button class="btn-secondary" onclick="openKakao()">카카오톡 상담</button>
+                <h2 class="section__title">다른 연락 방법</h2>
+                <div class="contact-options">
+                    <div class="contact-option">
+                        <i class="fas fa-phone"></i>
+                        <h3>전화 상담</h3>
+                        <p>평일 9시-6시 즉시 연결</p>
+                        <a href="tel:010-0000-0000" class="contact-link">010-0000-0000</a>
+                    </div>
+                    
+                    <div class="contact-option">
+                        <i class="fas fa-video"></i>
+                        <h3>화상 미팅</h3>
+                        <p>구글미트/줌 30분 무료 상담</p>
+                        <a href="#" class="contact-link">미팅 예약하기</a>
+                    </div>
+                    
+                    <div class="contact-option">
+                        <i class="fas fa-envelope"></i>
+                        <h3>이메일 문의</h3>
+                        <p>24시간 언제든 문의 가능</p>
+                        <a href="mailto:hello@chiro.com" class="contact-link">hello@chiro.com</a>
                     </div>
                 </div>
             </div>

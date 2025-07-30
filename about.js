@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize team role card interactions
     initializeTeamInteractions();
+    
+    // Initialize tech stack interactions
+    initializeTechStackInteractions();
 });
 
 // Scroll Animations - Faster and smoother
@@ -39,7 +42,7 @@ function initializeScrollAnimations() {
 
     // Observe elements for animation - Faster transitions
     const animatedElements = document.querySelectorAll(
-        '.difference-card, .role-card, .value-card, .stat-item, .mission-statement, .philosophy-card'
+        '.difference-card, .role-card, .value-card, .stat-item, .mission-statement, .philosophy-card, .tech-category'
     );
     
     animatedElements.forEach((element, index) => {
@@ -216,6 +219,96 @@ function initializeTeamInteractions() {
                 philosophyCard.style.transform = 'scale(1)';
             }, 300);
         }, 3000);
+    }
+}
+
+// Tech Stack Interactions
+function initializeTechStackInteractions() {
+    const techCategories = document.querySelectorAll('.tech-category');
+    
+    techCategories.forEach((category, categoryIndex) => {
+        const techItems = category.querySelectorAll('.tech-item');
+        
+        category.addEventListener('mouseenter', function() {
+            // Animate tech items with stagger effect
+            techItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.transform = 'translateX(8px) scale(1.02)';
+                    item.style.background = 'rgba(29, 185, 84, 0.15)';
+                }, index * 50);
+            });
+            
+            // Rotate category icon
+            const categoryIcon = this.querySelector('h3 i');
+            if (categoryIcon) {
+                categoryIcon.style.transform = 'rotate(10deg) scale(1.1)';
+            }
+        });
+        
+        category.addEventListener('mouseleave', function() {
+            // Reset tech items
+            techItems.forEach(item => {
+                item.style.transform = 'translateX(0) scale(1)';
+                item.style.background = 'rgba(255, 255, 255, 0.05)';
+            });
+            
+            // Reset category icon
+            const categoryIcon = this.querySelector('h3 i');
+            if (categoryIcon) {
+                categoryIcon.style.transform = 'rotate(0deg) scale(1)';
+            }
+        });
+        
+        // Individual tech item interactions
+        techItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.style.transform = 'scale(1.3) rotate(5deg)';
+                    icon.style.color = '#1ed760';
+                }
+                
+                this.style.boxShadow = '0 4px 20px rgba(29, 185, 84, 0.2)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                    icon.style.color = '#1DB954';
+                }
+                
+                this.style.boxShadow = '';
+            });
+        });
+    });
+    
+    // Add pulse animation to tech categories on scroll
+    const techStackObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const categories = entry.target.querySelectorAll('.tech-category');
+                categories.forEach((category, index) => {
+                    setTimeout(() => {
+                        category.style.opacity = '1';
+                        category.style.transform = 'translateY(0)';
+                        
+                        // Add subtle bounce effect
+                        setTimeout(() => {
+                            category.style.transform = 'translateY(-5px)';
+                            setTimeout(() => {
+                                category.style.transform = 'translateY(0)';
+                            }, 200);
+                        }, 100);
+                    }, index * 200);
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    const techStackSection = document.querySelector('.tech-stack-section');
+    if (techStackSection) {
+        techStackObserver.observe(techStackSection);
     }
 }
 
