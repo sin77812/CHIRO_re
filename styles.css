@@ -454,6 +454,53 @@ body {
         padding: 80px 0 100px 0;
     }
     
+    /* 모바일 Impact Stats 최적화 */
+    .impact-stats {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .stat-item {
+        padding: 1.5rem;
+    }
+    
+    .circular-progress {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 1rem;
+    }
+    
+    .progress-ring {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .progress-ring-background,
+    .progress-ring-fill {
+        cx: 50;
+        cy: 50;
+        r: 42;
+        stroke-width: 6;
+    }
+    
+    .progress-ring-fill {
+        stroke-dasharray: 264; /* 2π × 42 */
+        stroke-dashoffset: 264;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-item h3 {
+        font-size: 1.2rem;
+    }
+    
+    .stat-item p {
+        font-size: 0.9rem;
+    }
+    
     /* 모바일 포트폴리오 카드 최적화 */
     .portfolio-grid {
         grid-template-columns: 1fr;
@@ -658,36 +705,145 @@ body {
     line-height: 1.6;
 }
 
-/* Our Impact Section */
+/* Our Impact Section - 프리미엄 업그레이드 */
 .our-impact {
     padding: 100px 0;
     background-color: var(--primary-dark);
+    position: relative;
+    overflow: hidden;
 }
 
-.stats-grid {
+.our-impact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(29, 185, 84, 0.02) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Impact Stats Grid */
+.impact-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-xl);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
 }
 
-.stat-card {
+/* Stat Item */
+.stat-item {
     text-align: center;
-    padding: var(--spacing-lg);
+    padding: 2rem;
+    background: rgba(29, 185, 84, 0.03);
+    border-radius: 20px;
+    border: 1px solid rgba(29, 185, 84, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(29, 185, 84, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-8px);
+    background: rgba(29, 185, 84, 0.05);
+    border-color: rgba(29, 185, 84, 0.2);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        0 0 50px rgba(29, 185, 84, 0.1);
+}
+
+.stat-item:hover::before {
+    opacity: 1;
+}
+
+/* 원형 프로그레스 바 */
+.circular-progress {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+}
+
+.progress-ring {
+    width: 120px;
+    height: 120px;
+    transform: rotate(-90deg);
+    filter: drop-shadow(0 0 10px rgba(29, 185, 84, 0.3));
+}
+
+.progress-ring-background {
+    stroke: rgba(29, 185, 84, 0.1);
+    stroke-width: 8;
+    fill: transparent;
+}
+
+.progress-ring-fill {
+    stroke: #1DB954;
+    stroke-width: 8;
+    fill: transparent;
+    stroke-linecap: round;
+    stroke-dasharray: 314; /* 2π × 50 */
+    stroke-dashoffset: 314;
+    transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 5px rgba(29, 185, 84, 0.5));
+}
+
+/* Stat Content - 중앙 숫자 */
+.stat-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1DB954;
     display: block;
-    font-size: 3rem;
-    font-weight: var(--font-weight-bold);
-    color: var(--primary-green);
-    margin-bottom: var(--spacing-sm);
+    line-height: 1;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 20px rgba(29, 185, 84, 0.3);
 }
 
-.stat-label {
-    font-size: 1.1rem;
+.stat-unit {
+    font-size: 1rem;
+    color: rgba(29, 185, 84, 0.8);
+    margin-left: 2px;
+    font-weight: 600;
+}
+
+/* Stat Item 제목과 설명 */
+.stat-item h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.stat-item p {
+    font-size: 0.95rem;
     color: var(--text-light-gray);
-    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+    max-width: 200px;
+    margin: 0 auto;
 }
 
 /* Portfolio Preview Section */

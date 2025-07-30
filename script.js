@@ -35,16 +35,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Counter Animation with Intersection Observer
+    // Impact Stats Animation with Intersection Observer
+    const impactObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                animateImpactStats();
+                impactObserver.unobserve(target);
+            }
+        });
+    }, { 
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+    });
+    
+    // Observe impact stats section
+    const impactStats = document.querySelector('.impact-stats');
+    if (impactStats) impactObserver.observe(impactStats);
+    
+    // Counter Animation with Intersection Observer (for trust badges)
     const counterObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const target = entry.target;
-                const numbers = target.querySelectorAll('.stat-number[data-target], .number[data-target]');
+                const numbers = target.querySelectorAll('.number[data-target]');
                 
                 numbers.forEach((number, index) => {
                     const targetValue = parseInt(number.getAttribute('data-target'));
-                    animateCounter(number, targetValue, index * 500); // 0.5s delay between counters
+                    animateCounter(number, targetValue, index * 500);
                 });
                 
                 counterObserver.unobserve(target);
@@ -52,10 +70,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { threshold: 0.3 });
     
-    // Observe sections with counters
-    const statsSection = document.querySelector('.our-impact');
+    // Observe trust badges
     const trustBadges = document.querySelector('.trust-badges');
-    if (statsSection) counterObserver.observe(statsSection);
     if (trustBadges) counterObserver.observe(trustBadges);
     
     // Intersection Observer for scroll animations - Faster
@@ -356,7 +372,62 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Counter Animation Function
+// Impact Stats Animation Function
+function animateImpactStats() {
+    // 1. 프로그레스 바 애니메이션
+    document.querySelectorAll('.progress-ring-fill').forEach((circle, index) => {
+        const progressContainer = circle.closest('.circular-progress');
+        const percentage = parseInt(progressContainer.dataset.percentage);
+        
+        // 모바일과 데스크탑 구분
+        const isMobile = window.innerWidth <= 768;
+        const circumference = isMobile ? 264 : 314; // 모바일: 2π × 42, 데스크탑: 2π × 50
+        const offset = circumference - (percentage / 100) * circumference;
+        
+        setTimeout(() => {
+            circle.style.strokeDashoffset = offset;
+        }, index * 300);
+    });
+
+    // 2. 숫자 카운터 애니메이션 (펄스 효과 포함)
+    document.querySelectorAll('.stat-number[data-target]').forEach((num, index) => {
+        const target = parseInt(num.dataset.target);
+        let current = 0;
+        
+        setTimeout(() => {
+            const increment = target / 60; // 60 frames
+            const duration = 2000; // 2 seconds
+            const stepTime = duration / 60;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                
+                if (current >= target) {
+                    num.textContent = target;
+                    clearInterval(timer);
+                    
+                    // 완료 시 체크 효과
+                    num.style.color = '#1ed760';
+                    num.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        num.style.color = '#1DB954';
+                        num.style.transform = 'scale(1)';
+                    }, 500);
+                } else {
+                    num.textContent = Math.floor(current);
+                    
+                    // 펄스 효과
+                    if (Math.floor(current) % 10 === 0 && Math.floor(current) > 0) {
+                        num.style.transform = 'scale(1.05)';
+                        setTimeout(() => num.style.transform = 'scale(1)', 100);
+                    }
+                }
+            }, stepTime);
+        }, index * 500); // 0.5초 간격으로 순차 시작
+    });
+}
+
+// Counter Animation Function (for trust badges)
 function animateCounter(element, target, delay = 0) {
     setTimeout(() => {
         let current = 0;
