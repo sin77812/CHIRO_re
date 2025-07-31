@@ -897,6 +897,10 @@ body {
     background: linear-gradient(90deg, #1ed760, #22ff6b);
 }
 
+.portfolio-card.card-tertiary::before {
+    background: linear-gradient(90deg, #22ff6b, #4eff80);
+}
+
 /* 카드 호버 효과 */
 .portfolio-card:hover {
     transform: translateY(-8px) scale(1.02);
@@ -999,6 +1003,21 @@ body {
     box-shadow: 0 0 20px rgba(30, 215, 96, 0.1);
 }
 
+.result-badge.medical {
+    background: linear-gradient(135deg, rgba(78, 255, 128, 0.2), rgba(78, 255, 128, 0.1));
+    color: #4eff80;
+    border: 1px solid rgba(78, 255, 128, 0.3);
+    box-shadow: 0 0 20px rgba(78, 255, 128, 0.1);
+}
+
+.portfolio-note {
+    text-align: center;
+    margin: var(--spacing-md) 0;
+    color: var(--text-dark-gray);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
 .portfolio__cta {
     display: block;
     margin: var(--spacing-xl) auto 0;
@@ -1039,6 +1058,85 @@ body {
 .footer__text {
     color: var(--text-light-gray);
     font-size: 0.9rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer__info {
+    display: grid;
+    gap: var(--spacing-md);
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.footer__info .company-info,
+.footer__info .contact-details {
+    padding: var(--spacing-md);
+    background-color: var(--surface-dark);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-dark);
+}
+
+.footer__info .company-info p,
+.footer__info .contact-details p {
+    color: var(--text-light-gray);
+    font-size: 0.85rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer__info .company-info p:last-child,
+.footer__info .contact-details p:last-child {
+    margin-bottom: 0;
+}
+
+.footer__info .company-info p strong {
+    color: var(--primary-green);
+}
+
+.footer-links {
+    text-align: center;
+    margin: var(--spacing-md) 0;
+}
+
+.footer-links a {
+    color: var(--text-light-gray);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-green);
+}
+
+.operating-hours {
+    text-align: center;
+    padding: var(--spacing-md);
+    background-color: var(--surface-dark);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-dark);
+    margin: var(--spacing-md) 0;
+}
+
+.operating-hours p {
+    color: var(--text-light-gray);
+    font-size: 0.9rem;
+}
+
+.operating-hours strong {
+    color: var(--accent-green);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-dark);
+    margin-top: var(--spacing-md);
+}
+
+.copyright p {
+    color: var(--text-dark-gray);
+    font-size: 0.8rem;
 }
 
 /* Responsive Design */
