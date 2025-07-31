@@ -29,8 +29,40 @@
     <main>
         <section id="home" class="hero">
             <div class="hero__background"></div>
+            <!-- Signature Graphic Elements -->
+            <div class="floating-geometry floating-geometry--top-right">
+                <div class="geometry-shape geometry-shape--square"></div>
+                <div class="geometry-shape geometry-shape--circle"></div>
+            </div>
+            <div class="floating-geometry floating-geometry--bottom-left">
+                <div class="geometry-shape geometry-shape--triangle"></div>
+                <div class="geometry-shape geometry-shape--hexagon"></div>
+            </div>
+            <!-- Transformation Lines -->
+            <div class="transformation-lines">
+                <svg class="transform-line transform-line--left" viewBox="0 0 200 400">
+                    <path class="line-path" d="M50,50 Q150,200 50,350" stroke="url(#greenGradient)" stroke-width="2" fill="none"/>
+                    <defs>
+                        <linearGradient id="greenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1DB954;stop-opacity:0.3"/>
+                            <stop offset="50%" style="stop-color:#1ed760;stop-opacity:0.6"/>
+                            <stop offset="100%" style="stop-color:#22ff6b;stop-opacity:0.2"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <svg class="transform-line transform-line--right" viewBox="0 0 200 400">
+                    <path class="line-path" d="M150,50 Q50,200 150,350" stroke="url(#greenGradient2)" stroke-width="2" fill="none"/>
+                    <defs>
+                        <linearGradient id="greenGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#22ff6b;stop-opacity:0.2"/>
+                            <stop offset="50%" style="stop-color:#1ed760;stop-opacity:0.6"/>
+                            <stop offset="100%" style="stop-color:#1DB954;stop-opacity:0.3"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
             <div class="hero__content">
-                <h1 class="hero__title">오래된 홈페이지<br>새로운 시대의 옷을 입다</h1>
+                <h1 class="hero__title">오래된 홈페이지<br><span class="morphing-word">새로운</span> 시대의 옷을 입다</h1>
                 <p class="hero__subtitle">
                     홈페이지 전문 리모델링 서비스<br>
                 

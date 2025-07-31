@@ -145,9 +145,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Premium Hero Animations
+    // Premium Hero Animations Orchestra
     initializeHeroAnimations();
     initializeParallaxEffect();
+    initializeHeroOrchestration();
 });
 
 // Hero Word Rotation Animation
@@ -447,12 +448,12 @@ function animateCounter(element, target, delay = 0) {
     }, delay);
 }
 
-// Word Morphing Animation Function - Simple Version
+// Premium Word Morphing Animation - 2024 Enhanced Version
 function initializeMorphingWord() {
-    const morphingElement = document.getElementById('morphingText');
+    const morphingElement = document.querySelector('.morphing-word');
     if (!morphingElement) return;
 
-    const words = ['새 시대의', '현대적인', '트렌디한', '미래의', '세련된'];
+    const words = ['새로운', '현대적인', '미래의', '트렌디한'];
     let currentIndex = 0;
     let morphingTimer;
 
@@ -460,11 +461,11 @@ function initializeMorphingWord() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function changeWord() {
-        // Fade out current word
+        // Add fade-out effect
         morphingElement.classList.add('fade-out');
         
         setTimeout(() => {
-            // Change to next word when fully faded out
+            // Change to next word
             currentIndex = (currentIndex + 1) % words.length;
             morphingElement.textContent = words[currentIndex];
             
@@ -473,10 +474,10 @@ function initializeMorphingWord() {
             morphingElement.classList.add('fade-in');
             
             setTimeout(() => {
-                // Complete fade-in
+                // Complete fade-in animation
                 morphingElement.classList.remove('fade-in');
-            }, 50);
-        }, 200);
+            }, 100);
+        }, 300);
     }
 
     // Start morphing animation
@@ -485,10 +486,13 @@ function initializeMorphingWord() {
         morphingTimer = setInterval(changeWord, interval);
     }
 
-    // Start animation 2 seconds after page load
+    // Initialize first word
+    morphingElement.textContent = words[0];
+
+    // Start animation after 3 seconds
     setTimeout(() => {
         startMorphing();
-    }, 2000);
+    }, 3000);
 
     // Cleanup function for memory management
     return function cleanup() {
@@ -576,6 +580,90 @@ function initializePortfolioCards() {
     });
 }
 
+// Premium Hero Animation Orchestration - 2024 Enhanced
+function initializeHeroOrchestration() {
+    const heroContent = document.querySelector('.hero__content');
+    const heroTitle = document.querySelector('.hero__title');
+    const heroSubtitle = document.querySelector('.hero__subtitle');
+    const heroCta = document.querySelector('.hero__cta');
+    const trustBadges = document.querySelector('.trust-badges');
+    const floatingGeometry = document.querySelectorAll('.floating-geometry');
+    const transformLines = document.querySelectorAll('.line-path');
+    
+    if (!heroContent) return;
+    
+    // Step 1: Background fade-in (0.5s)
+    setTimeout(() => {
+        document.querySelector('.hero__background').style.opacity = '0.7';
+    }, 500);
+    
+    // Step 2: Signature graphics appear (0.8s, 0.3s intervals)
+    floatingGeometry.forEach((element, index) => {
+        setTimeout(() => {
+            element.style.opacity = index === 0 ? '0.15' : '0.12';
+            element.style.transform = 'translateY(0)';
+        }, 800 + (index * 300));
+    });
+    
+    // Step 3: Main text slides in from bottom (1s)
+    setTimeout(() => {
+        heroTitle.style.opacity = '1';
+        heroTitle.style.transform = 'translateY(0)';
+    }, 1000);
+    
+    // Step 4: Subtitle + CTA button appear (1.3s)
+    setTimeout(() => {
+        if (heroSubtitle) {
+            heroSubtitle.style.opacity = '1';
+            heroSubtitle.style.transform = 'translateY(0)';
+        }
+    }, 1300);
+    
+    setTimeout(() => {
+        if (heroCta) {
+            heroCta.style.opacity = '1';
+            heroCta.style.transform = 'translateY(0)';
+        }
+    }, 1500);
+    
+    // Step 5: Trust badges appear (1.8s)
+    setTimeout(() => {
+        if (trustBadges) {
+            trustBadges.style.opacity = '1';
+            trustBadges.style.transform = 'translateY(0)';
+        }
+    }, 1800);
+    
+    // Step 6: Transformation lines draw (2s)
+    setTimeout(() => {
+        transformLines.forEach(line => {
+            line.style.strokeDashoffset = '0';
+        });
+    }, 2000);
+}
+
+// Continuous Background Animation
+function initializeContinuousAnimations() {
+    const heroBackground = document.querySelector('.hero__background');
+    if (!heroBackground) return;
+    
+    // Subtle background position shift every 30s
+    let animationPhase = 0;
+    
+    setInterval(() => {
+        animationPhase = (animationPhase + 1) % 4;
+        
+        const transforms = [
+            'translate(0, 0) scale(1)',
+            'translate(5px, -3px) scale(1.01)',
+            'translate(-3px, 2px) scale(0.99)',
+            'translate(2px, -5px) scale(1.005)'
+        ];
+        
+        heroBackground.style.transform = transforms[animationPhase];
+    }, 30000);
+}
+
 // Initialize all animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize existing animations
@@ -584,6 +672,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize portfolio cards
     initializePortfolioCards();
+    
+    // Initialize continuous animations
+    initializeContinuousAnimations();
     
     // Store cleanup functions
     window.morphingCleanup = morphingCleanup;
