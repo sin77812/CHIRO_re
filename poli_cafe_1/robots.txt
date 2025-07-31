@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://beanandbrewcafe.com/sitemap.xml
+
+# Block search engines from indexing certain files
+Disallow: /js/
+Disallow: /css/
+Disallow: /images/temp/
+Disallow: /*.json$
+
+# Allow important directories
+Allow: /images/
+Allow: /assets/
+
+# Crawl delay
+Crawl-delay: 1

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BEAN & BREW 매장안내 - 서울 강남구 테헤란로 위치, 운영시간, 주차정보, 오시는 길을 확인하세요.">
+    <meta name="keywords" content="강남카페, 테헤란로, 매장위치, 운영시간, 주차정보">
+    <title>매장안내 - BEAN & BREW</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#C5A572">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/location.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">BEAN & BREW</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a class="nav-link" href="index.html">홈</a>
+                <a class="nav-link" href="menu.html">메뉴</a>
+                <a class="nav-link active" href="location.html">매장안내</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Location Hero -->
+    <section class="location-hero">
+        <div class="container">
+            <h1 class="hero-title">매장 안내</h1>
+            <p class="hero-subtitle">편안하고 아늑한 공간에서 특별한 커피를 경험하세요</p>
+        </div>
+    </section>
+
+    <!-- Store Information -->
+    <section class="store-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">📍</div>
+                    <h3>주소</h3>
+                    <p>서울 강남구 테헤란로 123 빌딩 1층</p>
+                    <p class="detail">지하철 2호선 강남역 3번 출구 도보 5분</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">🕒</div>
+                    <h3>운영시간</h3>
+                    <div class="hours-detail">
+                        <p><strong>평일</strong> 07:00 - 21:00</p>
+                        <p><strong>주말</strong> 08:00 - 20:00</p>
+                        <p class="holiday">* 공휴일 휴무</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">📞</div>
+                    <h3>연락처</h3>
+                    <p class="phone-number">02-1234-5678</p>
+                    <p class="detail">주문 및 예약 문의</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">🚗</div>
+                    <h3>주차정보</h3>
+                    <p>건물 지하 1층 주차장 이용</p>
+                    <p class="detail">2시간 무료 주차 (영수증 지참)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">오시는 길</h2>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <div class="map-overlay">
+                        <div class="map-info">
+                            <h3>BEAN & BREW</h3>
+                            <p>서울 강남구 테헤란로 123 빌딩 1층</p>
+                            <div class="map-buttons">
+                                <button class="map-btn" onclick="openMap('kakao')">카카오맵</button>
+                                <button class="map-btn" onclick="openMap('naver')">네이버지도</button>
+                                <button class="map-btn" onclick="openMap('google')">구글지도</button>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=800&auto=format&fit=crop" alt="강남 거리 풍경" loading="lazy">
+                </div>
+            </div>
+            
+            <!-- Directions -->
+            <div class="directions">
+                <div class="direction-item">
+                    <h4>🚇 지하철 이용</h4>
+                    <ul>
+                        <li>2호선 강남역 3번 출구 → 도보 5분</li>
+                        <li>9호선 신논현역 1번 출구 → 도보 8분</li>
+                        <li>분당선 선릉역 4번 출구 → 도보 10분</li>
+                    </ul>
+                </div>
+                
+                <div class="direction-item">
+                    <h4>🚌 버스 이용</h4>
+                    <ul>
+                        <li>간선버스: 146, 360, 740</li>
+                        <li>지선버스: 3412, 4318, 6411</li>
+                        <li>광역버스: 9507, 9607</li>
+                    </ul>
+                </div>
+                
+                <div class="direction-item">
+                    <h4>🚗 자가용 이용</h4>
+                    <ul>
+                        <li>경부고속도로 → 서초IC → 강남대로</li>
+                        <li>올림픽대로 → 잠원IC → 테헤란로</li>
+                        <li>한남대교 → 강남대로 → 테헤란로</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Gallery -->
+    <section class="store-gallery">
+        <div class="container">
+            <h2 class="section-title">매장 둘러보기</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item main-image">
+                    <img src="https://images.unsplash.com/photo-1442975631115-c4f7b05b8a2c?q=80&w=600&auto=format&fit=crop" alt="매장 전경" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>매장 전경</h3>
+                        <p>넓고 밝은 공간</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=400&auto=format&fit=crop" alt="바 카운터" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>바 카운터</h3>
+                        <p>전문 바리스타가 직접</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559496417-e7f25cb247cd?q=80&w=400&auto=format&fit=crop" alt="로스팅 구역" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>로스팅 구역</h3>
+                        <p>매주 화요일 로스팅</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=400&auto=format&fit=crop" alt="좌석 공간" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>좌석 공간</h3>
+                        <p>편안한 분위기</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?q=80&w=400&auto=format&fit=crop" alt="디저트 진열대" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>디저트 진열대</h3>
+                        <p>수제 베이커리</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=400&auto=format&fit=crop" alt="테라스 좌석" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>테라스 좌석</h3>
+                        <p>야외 공간</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Features -->
+    <section class="store-features">
+        <div class="container">
+            <h2 class="section-title">매장 특징</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">☕</div>
+                    <h3>스페셜티 커피</h3>
+                    <p>엄선된 원두로 매일 신선하게 로스팅하는 프리미엄 커피</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">🏆</div>
+                    <h3>전문 바리스타</h3>
+                    <p>5년 이상 경력의 전문 바리스타들이 완벽한 한 잔을 제공</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">🌿</div>
+                    <h3>친환경 매장</h3>
+                    <p>일회용품 줄이기, 재활용 가능한 컵 사용으로 환경 보호</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">💻</div>
+                    <h3>Work-friendly</h3>
+                    <p>무료 Wi-Fi, 콘센트, 조용한 환경으로 업무하기 좋은 공간</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">🎵</div>
+                    <h3>감성적인 분위기</h3>
+                    <p>재즈와 보사노바 음악이 흐르는 편안하고 세련된 공간</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <h3>모바일 주문</h3>
+                    <p>전화 주문 후 픽업 서비스로 더욱 편리하게</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>더 궁금한 점이 있으신가요?</h2>
+                <p>언제든 연락주세요. 친절하게 안내해드리겠습니다.</p>
+                <div class="cta-buttons">
+                    <a href="tel:02-1234-5678" class="btn btn-primary">전화하기</a>
+                    <a href="index.html" class="btn btn-secondary">홈으로</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BEAN & BREW</h3>
+                    <p>매일 새롭게 로스팅하는 스페셜티 커피</p>
+                </div>
+                <div class="footer-info">
+                    <p>서울 강남구 테헤란로 123 빌딩 1층</p>
+                    <p>02-1234-5678</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BEAN & BREW. All rights reserved.</p>
+                <p class="client-note">* 클라이언트 요청으로 실제 매장명 비공개</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/location.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "name": "BEAN & BREW - 모던 미니멀 스페셜티 커피",
+  "short_name": "BEAN & BREW",
+  "description": "서울 강남의 모던 미니멀 스페셜티 커피. 매일 새롭게 로스팅하는 신선한 원두와 정성스러운 한 잔을 경험하세요.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#C5A572",
+  "orientation": "portrait",
+  "categories": ["food", "lifestyle", "business"],
+  "lang": "ko",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=192&auto=format&fit=crop",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=512&auto=format&fit=crop",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop",
+      "sizes": "1200x800",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
+}

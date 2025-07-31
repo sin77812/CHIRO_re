@@ -534,11 +534,56 @@ function initializeScrollProgress() {
     };
 }
 
+// Portfolio Card Click Functionality
+function initializePortfolioCards() {
+    const portfolioCards = document.querySelectorAll('.portfolio-card[data-demo-url]');
+    
+    portfolioCards.forEach(card => {
+        card.style.cursor = 'pointer';
+        
+        card.addEventListener('click', function() {
+            const demoUrl = this.getAttribute('data-demo-url');
+            
+            if (demoUrl) {
+                // Add loading state
+                const cardContent = this.querySelector('.card-content p');
+                const originalText = cardContent.textContent;
+                
+                cardContent.textContent = '사이트 열기 중...';
+                this.style.opacity = '0.7';
+                this.style.pointerEvents = 'none';
+                
+                // Open the demo site
+                window.open(demoUrl, '_blank');
+                
+                // Reset card after delay
+                setTimeout(() => {
+                    cardContent.textContent = originalText;
+                    this.style.opacity = '1';
+                    this.style.pointerEvents = 'auto';
+                }, 1500);
+            }
+        });
+        
+        // Add hover effect
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+}
+
 // Initialize all animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize existing animations
     const morphingCleanup = initializeMorphingWord();
     const scrollProgressCleanup = initializeScrollProgress();
+    
+    // Initialize portfolio cards
+    initializePortfolioCards();
     
     // Store cleanup functions
     window.morphingCleanup = morphingCleanup;

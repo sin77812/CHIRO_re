@@ -124,20 +124,8 @@ function initializeDemoButtons() {
     
     demoButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Get the case card to determine which demo to show
-            const caseCard = this.closest('.case-card');
-            const category = caseCard.getAttribute('data-category');
-            
-            // Demo URLs (replace with actual URLs)
-            const demoUrls = {
-                'manufacturing': 'https://example-manufacturing.com',
-                'hospital': 'https://example-hospital.com',
-                'cafe': 'https://example-cafe.com',
-                'lawyer': 'https://example-lawyer.com',
-                'service': 'https://example-service.com'
-            };
-            
-            const demoUrl = demoUrls[category];
+            // Check if button has specific demo URL
+            const demoUrl = this.getAttribute('data-demo-url');
             
             if (demoUrl) {
                 // Add loading state
@@ -145,7 +133,7 @@ function initializeDemoButtons() {
                 this.textContent = '사이트 열기 중...';
                 this.disabled = true;
                 
-                // Open in new tab
+                // Open the specific demo site
                 window.open(demoUrl, '_blank');
                 
                 // Reset button after delay
@@ -154,11 +142,41 @@ function initializeDemoButtons() {
                     this.disabled = false;
                 }, 1000);
             } else {
-                // Show coming soon message
-                this.textContent = '준비 중입니다';
-                setTimeout(() => {
-                    this.textContent = '실제 사이트 보기';
-                }, 2000);
+                // Fallback for other buttons
+                const caseCard = this.closest('.case-card');
+                const category = caseCard.getAttribute('data-category');
+                
+                // Demo URLs for other categories
+                const demoUrls = {
+                    'manufacturing': 'https://example-manufacturing.com',
+                    'hospital': 'https://example-hospital.com',
+                    'lawyer': 'https://example-lawyer.com',
+                    'service': 'https://example-service.com'
+                };
+                
+                const fallbackUrl = demoUrls[category];
+                
+                if (fallbackUrl) {
+                    // Add loading state
+                    const originalText = this.textContent;
+                    this.textContent = '사이트 열기 중...';
+                    this.disabled = true;
+                    
+                    // Open in new tab
+                    window.open(fallbackUrl, '_blank');
+                    
+                    // Reset button after delay
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.disabled = false;
+                    }, 1000);
+                } else {
+                    // Show coming soon message
+                    this.textContent = '준비 중입니다';
+                    setTimeout(() => {
+                        this.textContent = '실제 사이트 보기';
+                    }, 2000);
+                }
             }
         });
     });

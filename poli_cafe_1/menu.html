@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BEAN & BREW 메뉴 - 에스프레소, 핸드드립, 시즌 스페셜, 디저트까지 다양한 스페셜티 커피 메뉴를 만나보세요.">
+    <meta name="keywords" content="커피메뉴, 에스프레소, 핸드드립, 라떼, 디저트, 베이커리">
+    <title>Menu - BEAN & BREW</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#C5A572">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">BEAN & BREW</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a class="nav-link" href="index.html">홈</a>
+                <a class="nav-link active" href="menu.html">메뉴</a>
+                <a class="nav-link" href="location.html">매장안내</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Hero -->
+    <section class="menu-hero">
+        <div class="container">
+            <h1 class="hero-title">Our Menu</h1>
+            <p class="hero-subtitle">신선하게 로스팅한 원두로 만드는 특별한 커피</p>
+        </div>
+    </section>
+
+    <!-- Menu Categories -->
+    <section class="menu-categories">
+        <div class="container">
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="all">전체</button>
+                <button class="filter-btn" data-category="espresso">에스프레소 베이스</button>
+                <button class="filter-btn" data-category="handdrip">핸드드립</button>
+                <button class="filter-btn" data-category="seasonal">시즌 스페셜</button>
+                <button class="filter-btn" data-category="dessert">디저트 & 베이커리</button>
+            </div>
+
+            <!-- Espresso Base -->
+            <div class="menu-category" data-category="espresso">
+                <h2 class="category-title">에스프레소 베이스</h2>
+                <div class="menu-items">
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=300&auto=format&fit=crop" alt="아메리카노" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>시그니처 아메리카노</h3>
+                            <p>깊고 풍부한 맛의 에스프레소에 물을 더한 클래식</p>
+                            <span class="price">8,500원</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=300&auto=format&fit=crop" alt="카페라떼" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>카페 라떼</h3>
+                            <p>부드러운 스팀밀크와 에스프레소의 완벽한 조화</p>
+                            <span class="price">9,000원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=300&auto=format&fit=crop" alt="카푸치노" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>카푸치노</h3>
+                            <p>진한 에스프레소와 풍성한 폼밀크의 이탈리안 클래식</p>
+                            <span class="price">9,000원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=300&auto=format&fit=crop" alt="플랫화이트" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>플랫 화이트</h3>
+                            <p>진한 더블샷과 벨벳 같은 마이크로폼의 호주식 커피</p>
+                            <span class="price">9,500원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?q=80&w=300&auto=format&fit=crop" alt="마키아또" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>마키아또</h3>
+                            <p>에스프레소에 소량의 스팀밀크를 점찍은 이탈리안 스타일</p>
+                            <span class="price">8,000원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?q=80&w=300&auto=format&fit=crop" alt="모카" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>카페 모카</h3>
+                            <p>에스프레소, 초콜릿, 스팀밀크의 달콤한 조합</p>
+                            <span class="price">10,000원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1610889556528-9a770e32642f?q=80&w=300&auto=format&fit=crop" alt="코르타도" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>코르타도</h3>
+                            <p>에스프레소와 따뜻한 우유가 1:1 비율로 만나는 스페인식 커피</p>
+                            <span class="price">9,000원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=300&auto=format&fit=crop" alt="에스프레소" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>에스프레소</h3>
+                            <p>순수한 커피 원두의 진수를 느낄 수 있는 싱글/더블샷</p>
+                            <span class="price">7,000원</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hand Drip -->
+            <div class="menu-category" data-category="handdrip">
+                <h2 class="category-title">핸드드립</h2>
+                <div class="menu-items">
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=300&auto=format&fit=crop" alt="콜롬비아" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>콜롬비아 우일라</h3>
+                            <p>달콤한 카라멜과 견과류 풍미의 균형잡힌 맛</p>
+                            <span class="price">12,000원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?q=80&w=300&auto=format&fit=crop" alt="에티오피아" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>에티오피아 예가체프</h3>
+                            <p>플로럴하고 시트러스한 밝은 산미의 대표적인 스페셜티</p>
+                            <span class="price">13,000원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=300&auto=format&fit=crop" alt="케냐" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>케냐 AA</h3>
+                            <p>블랙커런트와 와인 같은 깊고 강렬한 풍미</p>
+                            <span class="price">13,500원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?q=80&w=300&auto=format&fit=crop" alt="과테말라" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>과테말라 안티구아</h3>
+                            <p>스모키하고 스파이시한 풀바디의 중미 대표 원두</p>
+                            <span class="price">12,500원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0dd?q=80&w=300&auto=format&fit=crop" alt="브라질" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>브라질 산토스</h3>
+                            <p>초콜릿과 견과류의 풍미가 어우러진 부드러운 맛</p>
+                            <span class="price">11,500원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?q=80&w=300&auto=format&fit=crop" alt="파나마" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>파나마 게이샤</h3>
+                            <p>세계 최고급 원두, 복잡하고 우아한 풍미 (한정)</p>
+                            <span class="price">25,000원</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seasonal Special -->
+            <div class="menu-category" data-category="seasonal">
+                <h2 class="category-title">시즌 스페셜</h2>
+                <div class="menu-items">
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=300&auto=format&fit=crop" alt="시즌 라떼" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>겨울 시나몬 라떼</h3>
+                            <p>따뜻한 시나몬과 바닐라가 어우러진 겨울 한정 메뉴</p>
+                            <span class="price">9,500원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1578328719520-c0c57d986560?q=80&w=300&auto=format&fit=crop" alt="콜드브루" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>콜드브루 토닉</h3>
+                            <p>상큼한 토닉워터와 콜드브루의 시원한 만남</p>
+                            <span class="price">8,500원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=300&auto=format&fit=crop" alt="아포가토" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>아포가토</h3>
+                            <p>바닐라 아이스크림 위에 뜨거운 에스프레소를 부은 이탈리안 디저트</p>
+                            <span class="price">11,000원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1568711334181-1d3a55dd63c4?q=80&w=300&auto=format&fit=crop" alt="플랫브루" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>시그니처 플랫브루</h3>
+                            <p>특별한 필터로 추출한 깔끔하고 진한 맛의 혁신적인 브루잉</p>
+                            <span class="price">10,000원</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dessert & Bakery -->
+            <div class="menu-category" data-category="dessert">
+                <h2 class="category-title">디저트 & 베이커리</h2>
+                <div class="menu-items">
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1578662015995-34f0e0300f7b?q=80&w=300&auto=format&fit=crop" alt="크루아상" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>버터 크루아상</h3>
+                            <p>바삭하고 부드러운 프랑스식 정통 크루아상</p>
+                            <span class="price">6,000원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1607478900766-efe13248b125?q=80&w=300&auto=format&fit=crop" alt="치즈케이크" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>뉴욕 치즈케이크</h3>
+                            <p>진한 크림치즈의 부드럽고 촉촉한 식감</p>
+                            <span class="price">8,500원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1571115764595-644a1f56a55c?q=80&w=300&auto=format&fit=crop" alt="티라미수" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>클래식 티라미수</h3>
+                            <p>에스프레소에 적신 사보이아르디와 마스카포네의 완벽한 조화</p>
+                            <span class="price">9,000원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=300&auto=format&fit=crop" alt="브라우니" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>초콜릿 브라우니</h3>
+                            <p>진한 다크초콜릿과 호두가 들어간 촉촉한 브라우니</p>
+                            <span class="price">7,000원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1549007953-2f2dc0b24019?q=80&w=300&auto=format&fit=crop" alt="스콘" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>블루베리 스콘</h3>
+                            <p>신선한 블루베리가 들어간 영국식 홈메이드 스콘</p>
+                            <span class="price">6,500원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=300&auto=format&fit=crop" alt="마들렌" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>레몬 마들렌</h3>
+                            <p>상큼한 레몬제스트가 들어간 프랑스 전통 케이크</p>
+                            <span class="price">5,500원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=300&auto=format&fit=crop" alt="마카롱" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>프렌치 마카롱</h3>
+                            <p>바닐라, 초콜릿, 라즈베리 등 다양한 맛 (5개입)</p>
+                            <span class="price">12,000원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1571071131692-1d2511cfff8d?q=80&w=300&auto=format&fit=crop" alt="에클레어" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>바닐라 에클레어</h3>
+                            <p>바닐라 크림이 가득한 프랑스식 슈크림</p>
+                            <span class="price">7,500원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1551024501-6daa4ebb8d75?q=80&w=300&auto=format&fit=crop" alt="프레첼" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>소금 프레첼</h3>
+                            <p>쫄깃한 식감의 독일식 전통 빵</p>
+                            <span class="price">5,000원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=300&auto=format&fit=crop" alt="아메리칸쿠키" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>초콜릿칩 쿠키</h3>
+                            <p>바삭하면서 촉촉한 홈메이드 아메리칸 스타일 쿠키</p>
+                            <span class="price">4,500원</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item-card">
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=300&auto=format&fit=crop" alt="와플" loading="lazy">
+                        </div>
+                        <div class="item-info">
+                            <h3>벨기에 와플</h3>
+                            <p>메이플시럽과 휘핑크림을 올린 따뜻한 와플</p>
+                            <span class="price">8,000원</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BEAN & BREW</h3>
+                    <p>매일 새롭게 로스팅하는 스페셜티 커피</p>
+                </div>
+                <div class="footer-info">
+                    <p>서울 강남구 테헤란로 123 빌딩 1층</p>
+                    <p>02-1234-5678</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BEAN & BREW. All rights reserved.</p>
+                <p class="client-note">* 클라이언트 요청으로 실제 매장명 비공개</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>

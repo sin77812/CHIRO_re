@@ -1,0 +1,321 @@
+/* Menu Page Specific Styles */
+
+/* Menu Hero */
+.menu-hero {
+    background: var(--secondary-gray);
+    padding: 120px 0 80px;
+    text-align: center;
+}
+
+.menu-hero .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    color: var(--accent-black);
+}
+
+.menu-hero .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    font-weight: var(--font-light);
+}
+
+/* Active Navigation Link */
+.nav-link.active {
+    color: var(--point-brown);
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Menu Categories */
+.menu-categories {
+    padding: 80px 0;
+}
+
+/* Category Filters */
+.category-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 2px solid var(--light-gray);
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: var(--font-medium);
+    color: var(--text-gray);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--accent-black);
+    color: var(--primary-white);
+    border-color: var(--accent-black);
+    transform: translateY(-2px);
+}
+
+/* Menu Category */
+.menu-category {
+    margin-bottom: 5rem;
+}
+
+.menu-category.hidden {
+    display: none;
+}
+
+.category-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--accent-black);
+    position: relative;
+}
+
+.category-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--point-brown);
+    border-radius: 2px;
+}
+
+/* Menu Items Grid */
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* Menu Item Card */
+.menu-item-card {
+    background: var(--primary-white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.menu-item-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.item-image {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.menu-item-card:hover .item-image img {
+    transform: scale(1.1);
+}
+
+.item-info {
+    padding: 1.5rem;
+    position: relative;
+}
+
+.item-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent-black);
+    font-weight: var(--font-semibold);
+}
+
+.item-info p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.item-info .price {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: var(--font-bold);
+    color: var(--point-brown);
+    background: rgba(197, 165, 114, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+/* Special Styling for Premium Items */
+.menu-item-card[data-premium="true"] {
+    border: 2px solid var(--point-brown);
+    position: relative;
+}
+
+.menu-item-card[data-premium="true"]::before {
+    content: 'PREMIUM';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--point-brown);
+    color: var(--primary-white);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: var(--font-bold);
+    z-index: 2;
+}
+
+/* Filter Animation */
+.menu-category {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.menu-category.fade-out {
+    opacity: 0;
+}
+
+.menu-category.fade-in {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-hero {
+        padding: 100px 0 60px;
+    }
+    
+    .category-filters {
+        gap: 0.5rem;
+        padding: 0 1rem;
+    }
+    
+    .filter-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+    
+    .menu-items {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .menu-item-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .category-title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .item-info .price {
+        position: static;
+        display: inline-block;
+        margin-top: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-categories {
+        padding: 60px 0;
+    }
+    
+    .category-filters {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        width: 200px;
+        text-align: center;
+    }
+    
+    .menu-category {
+        margin-bottom: 3rem;
+    }
+    
+    .item-image {
+        height: 200px;
+    }
+    
+    .item-info {
+        padding: 1.2rem;
+    }
+    
+    .item-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .item-info p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Loading States */
+.menu-item-card.loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Hover Effects for Touch Devices */
+@media (hover: none) {
+    .menu-item-card:hover {
+        transform: none;
+        box-shadow: var(--shadow);
+    }
+    
+    .menu-item-card:hover .item-image img {
+        transform: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .footer,
+    .category-filters {
+        display: none;
+    }
+    
+    .menu-hero {
+        padding: 20px 0;
+    }
+    
+    .menu-item-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        margin-bottom: 1rem;
+    }
+    
+    .item-image {
+        height: 150px;
+    }
+}
