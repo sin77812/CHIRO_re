@@ -453,7 +453,7 @@ function initializeMorphingWord() {
     const morphingElement = document.querySelector('.morphing-word');
     if (!morphingElement) return;
 
-    const words = ['새로운', '현대적인', '미래의', '트렌디한'];
+    const words = ['웹', '얼굴', '시대', '분위기'];
     let currentIndex = 0;
     let morphingTimer;
 
