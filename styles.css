@@ -272,6 +272,16 @@ body {
     margin-bottom: 3rem;
     font-weight: 400;
     line-height: 1.6;
+}
+
+.hero__subtitle-en {
+    display: block;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    margin-top: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
@@ -492,6 +502,63 @@ body {
         padding: 80px 0 100px 0;
     }
     
+    /* 모바일 Our Impact 섹션 최적화 */
+    .our-impact {
+        padding: 60px 0;
+    }
+    
+    .our-impact .section__title {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+        margin-bottom: 0.8rem;
+    }
+    
+    .our-impact .section__subtitle {
+        font-size: 1rem;
+        margin-bottom: 3rem;
+    }
+    
+    .impact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .impact-card {
+        padding: 1.5rem;
+        min-height: auto;
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+    }
+    
+    .impact-number {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+        margin-bottom: 0;
+        margin-right: 1.5rem;
+        min-width: 80px;
+        flex-shrink: 0;
+    }
+    
+    .impact-content {
+        text-align: left;
+        flex: 1;
+    }
+    
+    .impact-label {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .impact-desc {
+        font-size: 0.8rem;
+    }
+    
+    .impact-summary {
+        font-size: 1rem;
+        margin-top: 3rem;
+        padding: 0 1rem;
+    }
+    
     /* 모바일 Impact Stats 최적화 */
     .impact-stats {
         grid-template-columns: 1fr;
@@ -651,36 +718,77 @@ body {
     font-weight: 300;
 }
 
-/* 섹션 구분선 */
+/* 섹션 구분선 - Hero 스타일 강화 */
 .section-divider {
     height: 1px;
     background: linear-gradient(90deg, 
         transparent 0%, 
         rgba(29, 185, 84, 0.2) 20%, 
-        rgba(29, 185, 84, 0.6) 50%, 
+        rgba(29, 185, 84, 0.8) 50%, 
         rgba(29, 185, 84, 0.2) 80%, 
         transparent 100%
     );
     margin: 80px auto;
     max-width: 80%;
     position: relative;
+    overflow: hidden;
 }
 
 .section-divider::before {
     content: '';
     position: absolute;
-    top: -1px;
+    top: -2px;
     left: 0;
     right: 0;
-    height: 3px;
+    height: 5px;
     background: linear-gradient(90deg, 
         transparent 0%, 
         rgba(29, 185, 84, 0.1) 20%, 
-        rgba(29, 185, 84, 0.3) 50%, 
+        rgba(30, 215, 96, 0.4) 50%, 
         rgba(29, 185, 84, 0.1) 80%, 
         transparent 100%
     );
-    filter: blur(2px);
+    filter: blur(3px);
+    animation: dividerPulse 4s ease-in-out infinite;
+}
+
+.section-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, 
+        rgba(30, 215, 96, 0.8) 0%, 
+        rgba(29, 185, 84, 0.4) 50%, 
+        transparent 100%
+    );
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 
+        0 0 10px rgba(30, 215, 96, 0.5),
+        0 0 20px rgba(29, 185, 84, 0.3);
+    animation: dividerGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes dividerPulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+@keyframes dividerGlow {
+    0% { 
+        box-shadow: 
+            0 0 10px rgba(30, 215, 96, 0.5),
+            0 0 20px rgba(29, 185, 84, 0.3);
+    }
+    100% { 
+        box-shadow: 
+            0 0 15px rgba(30, 215, 96, 0.8),
+            0 0 30px rgba(29, 185, 84, 0.5),
+            0 0 45px rgba(29, 185, 84, 0.2);
+    }
 }
 
 /* Hero Section - 업데이트된 패딩 */
@@ -714,17 +822,106 @@ body {
     background-attachment: fixed, scroll, scroll, scroll;
 }
 
-/* Why Chiro Section */
+/* Why Chiro Section - Hero DNA 확산 */
 .why-chiro {
     padding: 100px 0;
-    background-color: var(--surface-dark);
+    background: 
+        linear-gradient(135deg, rgba(29, 185, 84, 0.12) 0%, transparent 40%),
+        linear-gradient(225deg, rgba(30, 215, 96, 0.08) 0%, transparent 40%),
+        linear-gradient(180deg,
+            rgba(8, 25, 12, 1) 0%,
+            rgba(12, 30, 15, 0.98) 30%,
+            rgba(15, 35, 18, 0.95) 70%,
+            rgba(10, 28, 13, 1) 100%);
+    position: relative;
+    overflow: hidden;
+    border-top: 2px solid rgba(29, 185, 84, 0.4);
+    border-bottom: 2px solid rgba(29, 185, 84, 0.4);
+    box-shadow: 
+        inset 0 1px 0 rgba(29, 185, 84, 0.1),
+        inset 0 -1px 0 rgba(29, 185, 84, 0.1);
+}
+
+.why-chiro::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(29, 185, 84, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(30, 215, 96, 0.02) 0%, transparent 50%);
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 .why-chiro__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: var(--spacing-lg);
     margin-top: var(--spacing-xl);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 초기 애니메이션 상태 */
+.why-title {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+}
+
+.why-subtitle {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.why-card {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hero 스타일 지오메트리 요소 추가 */
+.why-card::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle,
+        rgba(29, 185, 84, 0.15) 0%,
+        rgba(30, 215, 96, 0.05) 70%,
+        transparent 100%);
+    border-radius: 50%;
+    top: -15px;
+    right: -15px;
+    filter: blur(15px);
+    opacity: 0.8;
+}
+
+/* 2x2 그리드 기반 초기 위치 */
+.why-card[data-card-index="0"] {
+    /* 좌상단 - 왼쪽 위에서 */
+    transform: translateX(-80px) translateY(-60px) scale(0.8);
+}
+
+.why-card[data-card-index="1"] {
+    /* 우상단 - 오른쪽 위에서 */
+    transform: translateX(80px) translateY(-60px) scale(0.8);
+}
+
+.why-card[data-card-index="2"] {
+    /* 좌하단 - 왼쪽 아래에서 */
+    transform: translateX(-80px) translateY(60px) scale(0.8);
+}
+
+.why-card[data-card-index="3"] {
+    /* 우하단 - 오른쪽 아래에서 */
+    transform: translateX(80px) translateY(60px) scale(0.8);
 }
 
 .feature-card {
@@ -732,7 +929,15 @@ body {
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-dark);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hero 스타일 호버 효과 통일 */
+.why-card.animation-complete:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+    border-color: rgba(29, 185, 84, 0.5);
+    box-shadow: 0 15px 40px rgba(29, 185, 84, 0.2);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .feature-card {
@@ -740,9 +945,9 @@ body {
 }
 
 .feature-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--primary-green);
-    box-shadow: 0 8px 25px rgba(29, 185, 84, 0.1);
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(29, 185, 84, 0.5);
+    box-shadow: 0 15px 40px rgba(29, 185, 84, 0.2);
 }
 
 .feature-card h3 {
@@ -757,12 +962,23 @@ body {
     line-height: 1.6;
 }
 
-/* Our Impact Section - 프리미엄 업그레이드 */
+/* Our Impact Section - 5개 지표 디자인 */
 .our-impact {
     padding: 100px 0;
-    background-color: var(--primary-dark);
+    background: 
+        radial-gradient(ellipse at center top, rgba(29, 185, 84, 0.15) 0%, transparent 60%),
+        linear-gradient(180deg, 
+            rgba(8, 30, 12, 1) 0%, 
+            rgba(12, 35, 15, 0.98) 30%,
+            rgba(15, 40, 18, 0.95) 70%,
+            rgba(8, 32, 12, 1) 100%);
     position: relative;
     overflow: hidden;
+    border-top: 2px solid rgba(29, 185, 84, 0.5);
+    border-bottom: 2px solid rgba(29, 185, 84, 0.5);
+    box-shadow: 
+        inset 0 2px 0 rgba(29, 185, 84, 0.2),
+        inset 0 -2px 0 rgba(29, 185, 84, 0.2);
 }
 
 .our-impact::before {
@@ -772,11 +988,166 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse at center, rgba(29, 185, 84, 0.02) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(29, 185, 84, 0.03) 0%, transparent 70%);
     pointer-events: none;
 }
 
-/* Impact Stats Grid */
+/* 섹션 제목 스타일링 */
+.our-impact .section__title {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #1DB954, #1ed760);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.our-impact .section__subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+/* Impact Grid - 5개 카드 1행 */
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Impact Cards - Hero DNA 적용 */
+.impact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: 
+        linear-gradient(145deg, rgba(29, 185, 84, 0.12) 0%, rgba(255, 255, 255, 0.02) 100%),
+        rgba(22, 22, 22, 0.9);
+    border: 2px solid rgba(29, 185, 84, 0.5);
+    border-radius: 20px;
+    padding: 2rem 1rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 15px 50px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(29, 185, 84, 0.2),
+        0 0 30px rgba(29, 185, 84, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hero 스타일 지오메트리 요소 */
+.impact-card::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg,
+        rgba(29, 185, 84, 0.1),
+        rgba(30, 215, 96, 0.05));
+    border-radius: 50%;
+    top: -20px;
+    left: -20px;
+    filter: blur(20px);
+    opacity: 0.7;
+}
+
+.impact-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(29, 185, 84, 0.5);
+    box-shadow: 0 15px 40px rgba(29, 185, 84, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* 숫자 스타일링 - 강화된 글로우 효과 */
+.impact-number {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #22ff6b 0%, #1ed760 30%, #1DB954 70%, #0fa844 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    filter: drop-shadow(0 0 8px rgba(29, 185, 84, 0.6)) drop-shadow(0 0 16px rgba(30, 215, 96, 0.4));
+    position: relative;
+    justify-content: center;
+    width: 100%;
+    white-space: pre;
+}
+
+/* 콘텐츠 스타일링 */
+.impact-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.impact-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.impact-desc {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* 스토리텔링 마무리 */
+.impact-summary {
+    text-align: center;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    margin-top: 4rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2rem;
+}
+
+
+/* 완료 펄스 효과 */
+.pulse-complete {
+    animation: pulseGlow 0.6s ease-out;
+}
+
+@keyframes pulseGlow {
+    0% { 
+        transform: scale(1); 
+        filter: brightness(1); 
+    }
+    50% { 
+        transform: scale(1.1); 
+        filter: brightness(1.3) drop-shadow(0 0 20px #1DB954); 
+    }
+    100% { 
+        transform: scale(1); 
+        filter: brightness(1); 
+    }
+}
+
+
+/* Old Impact Stats - 제거 예정 */
 .impact-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -811,9 +1182,10 @@ body {
 }
 
 .stat-item:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px) scale(1.02);
     background: rgba(29, 185, 84, 0.05);
-    border-color: rgba(29, 185, 84, 0.2);
+    border-color: rgba(29, 185, 84, 0.5);
+    box-shadow: 0 15px 40px rgba(29, 185, 84, 0.2);
     box-shadow: 
         0 10px 30px rgba(0, 0, 0, 0.3),
         0 0 50px rgba(29, 185, 84, 0.1);
@@ -920,7 +1292,7 @@ body {
     padding: 2rem;
     position: relative;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform, box-shadow;
     
     /* 기본 깊이감 그림자 */
@@ -955,9 +1327,9 @@ body {
 
 /* 카드 호버 효과 */
 .portfolio-card:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-5px) scale(1.02);
     box-shadow: 
-        0 8px 30px rgba(0, 0, 0, 0.4),
+        0 15px 40px rgba(29, 185, 84, 0.2),
         0 0 60px rgba(29, 185, 84, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
@@ -1213,9 +1585,21 @@ body {
         font-size: 2rem;
     }
     
-    .why-chiro__grid,
+    .why-chiro__grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    
     .stats-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* 모바일에서는 순차적으로 위에서 아래로 */
+    .why-card[data-card-index="0"],
+    .why-card[data-card-index="1"],
+    .why-card[data-card-index="2"],
+    .why-card[data-card-index="3"] {
+        transform: translateY(-60px) scale(0.8) !important;
     }
     
     .portfolio-grid {
@@ -1365,13 +1749,14 @@ body {
     border-radius: var(--radius-md);
     border: 1px solid rgba(29, 185, 84, 0.2);
     backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .badge:hover {
-    transform: translateY(-2px);
+    transform: translateY(-5px) scale(1.02);
     background: rgba(29, 185, 84, 0.15);
-    border-color: rgba(29, 185, 84, 0.4);
+    border-color: rgba(29, 185, 84, 0.5);
+    box-shadow: 0 15px 40px rgba(29, 185, 84, 0.2);
 }
 
 .badge .number {

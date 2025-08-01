@@ -35,6 +35,125 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Why Chiro Section Scroll-based Animation
+    let previousProgress = 0;
+    let ticking = false;
+
+    function updateWhyChiroScrollProgress() {
+        const section = document.querySelector('#why-chiro-section');
+        if (!section) return;
+
+        const rect = section.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // 섹션이 화면에 들어온 정도 계산 (0 ~ 1)
+        const scrollProgress = Math.max(0, Math.min(1, 
+            (windowHeight - rect.top) / (windowHeight + rect.height)
+        ));
+        
+        updateWhyChiroAnimations(scrollProgress);
+        previousProgress = scrollProgress;
+    }
+
+    function updateWhyChiroAnimations(progress) {
+        // 제목 애니메이션 (0~20% 구간)
+        updateTitleAnimation(progress);
+        
+        // 카드 애니메이션 (20%~70% 구간)
+        updateCardAnimations(progress);
+    }
+
+    function updateTitleAnimation(progress) {
+        const title = document.querySelector('.why-title');
+        const subtitle = document.querySelector('.why-subtitle');
+        
+        if (!title || !subtitle) return;
+        
+        // 0~20% 구간에서 제목 애니메이션
+        const titleProgress = Math.min(1, progress / 0.2);
+        
+        title.style.opacity = titleProgress;
+        title.style.transform = `translateY(${30 * (1 - titleProgress)}px) scale(${0.9 + (0.1 * titleProgress)})`;
+        
+        // 서브타이틀은 약간 지연 (10%~25% 구간)
+        const subtitleProgress = Math.max(0, Math.min(1, (progress - 0.1) / 0.15));
+        subtitle.style.opacity = subtitleProgress;
+        subtitle.style.transform = `translateY(${20 * (1 - subtitleProgress)}px)`;
+    }
+
+    function updateCardAnimations(progress) {
+        const cards = document.querySelectorAll('.why-card');
+        
+        cards.forEach((card, index) => {
+            // 화면 중간(50%)에서 모든 카드 애니메이션이 완료되도록 조정
+            // 제목이 20%에서 완료되므로, 카드들은 20%~50% 구간에서 애니메이션
+            const startProgress = 0.25 + (index * 0.05);  // 25%, 30%, 35%, 40%
+            const endProgress = 0.5;  // 모든 카드가 50%에서 완료
+            
+            // 해당 카드의 애니메이션 진행도 계산
+            const cardProgress = Math.max(0, Math.min(1, 
+                (progress - startProgress) / (endProgress - startProgress)
+            ));
+            
+            updateCardStyle(card, cardProgress, index);
+        });
+    }
+
+    function updateCardStyle(card, progress, index) {
+        // 모바일 체크
+        const isMobile = window.innerWidth <= 768;
+        
+        let position;
+        if (isMobile) {
+            // 모바일: 모든 카드가 위에서 아래로
+            position = { x: 0, y: -60 };
+        } else {
+            // 데스크톱: 2x2 그리드 기반 방향 설정
+            const positions = [
+                { x: -80, y: -60 }, // 좌상단
+                { x: 80, y: -60 },  // 우상단  
+                { x: -80, y: 60 },  // 좌하단
+                { x: 80, y: 60 }    // 우하단
+            ];
+            position = positions[index];
+        }
+        
+        // 스크롤 진행도에 따른 실시간 값 계산
+        const currentTranslateX = position.x * (1 - progress);
+        const currentTranslateY = position.y * (1 - progress);
+        const currentOpacity = progress;
+        const currentScale = 0.8 + (0.2 * progress);
+        
+        // CSS 실시간 적용
+        if (isMobile) {
+            card.style.transform = `translateY(${currentTranslateY}px) scale(${currentScale})`;
+        } else {
+            card.style.transform = `translateX(${currentTranslateX}px) translateY(${currentTranslateY}px) scale(${currentScale})`;
+        }
+        card.style.opacity = currentOpacity;
+        
+        // 애니메이션 완료시 클래스 추가
+        if (progress >= 1) {
+            card.classList.add('animation-complete');
+        } else {
+            card.classList.remove('animation-complete');
+        }
+    }
+
+    function handleWhyChiroScroll() {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                updateWhyChiroScrollProgress();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    // 스크롤 이벤트 리스너 등록
+    window.addEventListener('scroll', handleWhyChiroScroll, { passive: true });
+
+
     // Impact Stats Animation with Intersection Observer
     const impactObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
@@ -49,9 +168,9 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: '0px 0px -100px 0px'
     });
     
-    // Observe impact stats section
-    const impactStats = document.querySelector('.impact-stats');
-    if (impactStats) impactObserver.observe(impactStats);
+    // Observe impact grid section
+    const impactGrid = document.querySelector('.impact-grid');
+    if (impactGrid) impactObserver.observe(impactGrid);
     
     // Counter Animation with Intersection Observer (for trust badges)
     const counterObserver = new IntersectionObserver(function(entries) {
@@ -377,12 +496,16 @@ document.head.appendChild(style);
 function animateImpactStats() {
     // 1. 프로그레스 바 애니메이션
     document.querySelectorAll('.progress-ring-fill').forEach((circle, index) => {
-        const progressContainer = circle.closest('.circular-progress');
-        const percentage = parseInt(progressContainer.dataset.percentage);
+        const targets = [47, 10, 100];  // 각 카드의 목표값
+        const maxValues = [50, 15, 100]; // 프로그레스 바 최대값
+        
+        const target = targets[index];
+        const maxValue = maxValues[index];
+        const percentage = (target / maxValue) * 100;
         
         // 모바일과 데스크탑 구분
         const isMobile = window.innerWidth <= 768;
-        const circumference = isMobile ? 264 : 314; // 모바일: 2π × 42, 데스크탑: 2π × 50
+        const circumference = 220; // 2π × 35
         const offset = circumference - (percentage / 100) * circumference;
         
         setTimeout(() => {
@@ -391,7 +514,7 @@ function animateImpactStats() {
     });
 
     // 2. 숫자 카운터 애니메이션 (펄스 효과 포함)
-    document.querySelectorAll('.stat-number[data-target]').forEach((num, index) => {
+    document.querySelectorAll('.impact-number[data-target]').forEach((num, index) => {
         const target = parseInt(num.dataset.target);
         let current = 0;
         
