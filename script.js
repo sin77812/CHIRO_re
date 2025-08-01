@@ -460,7 +460,7 @@ function initializeMorphingWord() {
     const morphingElement = document.querySelector('.morphing-word');
     if (!morphingElement) return;
 
-    const words = ['웹', '얼굴', '시대', '분위기'];
+    const words = ['혁신을', '성장을', '차별화를', '미래를', '첫인상을'];
     let currentIndex = 0;
     let morphingTimer;
 

@@ -25,229 +25,249 @@
 
     <main>
         <section class="portfolio-hero">
+            <div class="portfolio-hero__background"></div>
+            <!-- Portfolio 전용 시그니처 그래픽 -->
+            <div class="portfolio-graphics">
+                <div class="project-grid project-grid--top-right">
+                    <div class="grid-item"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item"></div>
+                </div>
+                <div class="layered-cards layered-cards--bottom-left">
+                    <div class="card-layer card-layer--1"></div>
+                    <div class="card-layer card-layer--2"></div>
+                    <div class="card-layer card-layer--3"></div>
+                </div>
+            </div>
+            
             <div class="container">
-                <h1 class="portfolio-hero__title">성공적인 변화의 증거</h1>
-                <p class="portfolio-hero__subtitle">2024년, 우리가 만든 변화</p>
+                <div class="portfolio-hero__content">
+                    <h1 class="portfolio-hero__title">성공적인 변화의 증거</h1>
+                    <p class="portfolio-hero__subtitle">2024년, 치로와 함께한 브랜드들의 실제 성과</p>
+                    <div class="portfolio-hero__stats">
+                        <div class="hero-stat">
+                            <span class="hero-stat__number">47</span>
+                            <span class="hero-stat__label">완성 프로젝트</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat__number">180%</span>
+                            <span class="hero-stat__label">평균 성과 개선</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="hero-stat__number">100%</span>
+                            <span class="hero-stat__label">클라이언트 만족</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="portfolio-filter">
-            <div class="container">
-                <div class="filter-tags">
-                    <button class="filter-tag filter-tag--active" data-filter="all">전체</button>
-                    <button class="filter-tag" data-filter="manufacturing">#제조업</button>
-                    <button class="filter-tag" data-filter="hospital">#병원</button>
-                    <button class="filter-tag" data-filter="cafe">#카페</button>
-                    <button class="filter-tag" data-filter="lawyer">#법무사</button>
-                    <button class="filter-tag" data-filter="service">#서비스업</button>
+            <div class="portfolio-container">
+                <div class="filter-tabs">
+                    <button class="filter-tab filter-active" data-filter="all">전체</button>
+                    <button class="filter-tab" data-filter="manufacturing">#제조업</button>
+                    <button class="filter-tab" data-filter="hospital">#병원</button>
+                    <button class="filter-tab" data-filter="cafe">#카페</button>
+                    <button class="filter-tab" data-filter="service">#서비스업</button>
                 </div>
             </div>
         </section>
 
-        <section class="portfolio-cases">
-            <div class="container">
-                <div class="cases-grid">
-                    <!-- 제조업 케이스 -->
-                    <article class="case-card" data-category="manufacturing">
-                        <div class="case-card__header">
-                            <h3 class="case-card__title">방문자 30% 증가를 달성한 제조업체 홈페이지</h3>
-                            <span class="case-card__tag">#제조업</span>
+        <section class="portfolio-content">
+            <div class="portfolio-container">
+                <!-- 제조업체 케이스 -->
+                <div class="case-card" data-category="manufacturing">
+                    <div class="before-after-slider">
+                        <div class="before-image">
+                            <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=800&auto=format&fit=crop" alt="리뉴얼 전 제조업체 사이트">
+                        </div>
+                        <div class="after-image">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="리뉴얼 후 제조업체 사이트">
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    
+                    <div class="case-info">
+                        <h3>경기 소재 플라스틱 제조업체</h3>
+                        <p class="case-category">#제조업 #브랜드현대화</p>
+                        
+                        <div class="results">
+                            <div class="result-item">
+                                <span class="result-number">+180%</span>
+                                <span class="result-label">방문자 증가</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">+240%</span>
+                                <span class="result-label">문의 증가</span>
+                            </div>
                         </div>
                         
-                        <div class="case-card__comparison">
-                            <div class="before-after-slider">
-                                <div class="before-after-container">
-                                    <div class="before-image">
-                                        <img src="images/manufacturing-before.jpg" alt="리뉴얼 전">
-                                        <span class="image-label">BEFORE</span>
-                                    </div>
-                                    <div class="after-image">
-                                        <img src="images/manufacturing-after.jpg" alt="리뉴얼 후">
-                                        <span class="image-label">AFTER</span>
-                                    </div>
-                                    <div class="slider-handle"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="case-card__metrics">
-                            <div class="metric">
-                                <span class="metric__number">200%</span>
-                                <span class="metric__label">페이지 체류시간 증가</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric__number">150%</span>
-                                <span class="metric__label">문의 전화 증가</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric__number">개선</span>
-                                <span class="metric__label">브랜드 인지도</span>
-                            </div>
-                        </div>
-
-                        <div class="case-card__actions">
-                            <button class="btn-demo">실제 사이트 보기</button>
-                        </div>
-
-                        <blockquote class="case-card__testimonial">
+                        <blockquote class="client-quote">
                             "홈페이지가 완전히 달라졌어요. 고객들의 반응이 눈에 띄게 좋아졌습니다."
                         </blockquote>
-
-                        <div class="case-card__process">
-                            <div class="process-step">
-                                <span class="process-label">문제</span>
-                                <span class="process-text">오래된 디자인과 복잡한 구조</span>
-                            </div>
-                            <div class="process-arrow">→</div>
-                            <div class="process-step">
-                                <span class="process-label">솔루션</span>
-                                <span class="process-text">모던 디자인과 직관적 UI</span>
-                            </div>
-                            <div class="process-arrow">→</div>
-                            <div class="process-step">
-                                <span class="process-label">결과</span>
-                                <span class="process-text">방문자 증가 및 브랜드 강화</span>
-                            </div>
+                        
+                        <div class="case-actions">
+                            <button class="live-demo-btn">Live Demo</button>
+                            <button class="case-detail-btn">상세 보기</button>
                         </div>
-                    </article>
+                    </div>
+                </div>
 
-                    <!-- 병원 케이스 -->
-                    <article class="case-card" data-category="hospital">
-                        <div class="case-card__header">
-                            <h3 class="case-card__title">온라인 예약 40% 증가한 병원 홈페이지</h3>
-                            <span class="case-card__tag">#병원</span>
+                <!-- 병원 케이스 -->
+                <div class="case-card" data-category="hospital">
+                    <div class="before-after-slider">
+                        <div class="before-image">
+                            <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?q=80&w=800&auto=format&fit=crop" alt="리뉴얼 전 병원 사이트">
+                        </div>
+                        <div class="after-image">
+                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=800&auto=format&fit=crop" alt="리뉴얼 후 병원 사이트">
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    
+                    <div class="case-info">
+                        <h3>부천 소재 치과의원</h3>
+                        <p class="case-category">#병원 #온라인예약</p>
+                        
+                        <div class="results">
+                            <div class="result-item">
+                                <span class="result-number">+150%</span>
+                                <span class="result-label">온라인 예약 증가</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">+85%</span>
+                                <span class="result-label">환자 만족도</span>
+                            </div>
                         </div>
                         
-                        <div class="case-card__comparison">
-                            <div class="before-after-slider">
-                                <div class="before-after-container">
-                                    <div class="before-image">
-                                        <img src="images/hospital-before.jpg" alt="리뉴얼 전">
-                                        <span class="image-label">BEFORE</span>
-                                    </div>
-                                    <div class="after-image">
-                                        <img src="images/hospital-after.jpg" alt="리뉴얼 후">
-                                        <span class="image-label">AFTER</span>
-                                    </div>
-                                    <div class="slider-handle"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="case-card__metrics">
-                            <div class="metric">
-                                <span class="metric__number">40%</span>
-                                <span class="metric__label">온라인 예약 증가</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric__number">180%</span>
-                                <span class="metric__label">모바일 사용성 개선</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric__number">신뢰감</span>
-                                <span class="metric__label">환자 만족도 향상</span>
-                            </div>
-                        </div>
-
-                        <div class="case-card__actions">
-                            <button class="btn-demo">실제 사이트 보기</button>
-                        </div>
-
-                        <blockquote class="case-card__testimonial">
+                        <blockquote class="client-quote">
                             "환자분들이 예약하기 훨씬 편해졌다고 하시네요. 정말 만족합니다."
                         </blockquote>
-
-                        <div class="case-card__process">
-                            <div class="process-step">
-                                <span class="process-label">문제</span>
-                                <span class="process-text">복잡한 예약 시스템</span>
-                            </div>
-                            <div class="process-arrow">→</div>
-                            <div class="process-step">
-                                <span class="process-label">솔루션</span>
-                                <span class="process-text">간편한 온라인 예약</span>
-                            </div>
-                            <div class="process-arrow">→</div>
-                            <div class="process-step">
-                                <span class="process-label">결과</span>
-                                <span class="process-text">예약률 증가 및 신뢰도 향상</span>
-                            </div>
+                        
+                        <div class="case-actions">
+                            <button class="live-demo-btn">Live Demo</button>
+                            <button class="case-detail-btn">상세 보기</button>
                         </div>
-                    </article>
+                    </div>
+                </div>
 
-                    <!-- BEAN & BREW 카페 케이스 -->
-                    <article class="case-card" data-category="cafe">
-                        <div class="case-card__header">
-                            <h3 class="case-card__title">BEAN & BREW - 모던 미니멀 스페셜티 커피</h3>
-                            <span class="case-card__tag">#카페</span>
+                <!-- BEAN & BREW 카페 케이스 -->
+                <div class="case-card" data-category="cafe">
+                    <div class="before-after-slider">
+                        <div class="before-image">
+                            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop" alt="기존 카페 사이트">
+                        </div>
+                        <div class="after-image">
+                            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop" alt="BEAN & BREW 리뉴얼">
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    
+                    <div class="case-info">
+                        <h3>BEAN & BREW</h3>
+                        <p class="case-category">#카페 #미니멀디자인</p>
+                        
+                        <div class="results">
+                            <div class="result-item">
+                                <span class="result-number">+300%</span>
+                                <span class="result-label">브랜드 인지도</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">+120%</span>
+                                <span class="result-label">메뉴 탐색</span>
+                            </div>
                         </div>
                         
-                        <div class="case-card__comparison">
-                            <div class="before-after-slider">
-                                <div class="before-after-container">
-                                    <div class="before-image">
-                                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=600&auto=format&fit=crop" alt="기존 카페 사이트">
-                                        <span class="image-label">BEFORE</span>
-                                    </div>
-                                    <div class="after-image">
-                                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600&auto=format&fit=crop" alt="BEAN & BREW 리뉴얼">
-                                        <span class="image-label">AFTER</span>
-                                    </div>
-                                    <div class="slider-handle"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="case-card__metrics">
-                            <div class="metric">
-                                <span class="metric__number">85%</span>
-                                <span class="metric__label">메뉴 탐색 개선</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric__number">300%</span>
-                                <span class="metric__label">브랜드 인지도 향상</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric__number">완벽</span>
-                                <span class="metric__label">모바일 최적화</span>
-                            </div>
-                        </div>
-
-                        <div class="case-card__actions">
-                            <button class="btn-demo" data-demo-url="poli_cafe_1/index.html">실제 사이트 보기</button>
-                        </div>
-
-                        <blockquote class="case-card__testimonial">
+                        <blockquote class="client-quote">
                             "NOC Coffee 수준의 미니멀리즘을 구현해주셨어요. 고객들이 세련되다고 하네요."
                         </blockquote>
-
-                        <div class="case-card__process">
-                            <div class="process-step">
-                                <span class="process-label">문제</span>
-                                <span class="process-text">복잡한 메뉴 구조</span>
-                            </div>
-                            <div class="process-arrow">→</div>
-                            <div class="process-step">
-                                <span class="process-label">솔루션</span>
-                                <span class="process-text">미니멀 디자인 + 카테고리 필터</span>
-                            </div>
-                            <div class="process-arrow">→</div>
-                            <div class="process-step">
-                                <span class="process-label">결과</span>
-                                <span class="process-text">완벽한 사용성과 브랜드 경험</span>
-                            </div>
+                        
+                        <div class="case-actions">
+                            <button class="live-demo-btn" data-demo-url="poli_cafe_1/index.html">Live Demo</button>
+                            <button class="case-detail-btn">상세 보기</button>
                         </div>
-                    </article>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- 상세보기 모달 -->
+        <div class="case-detail-modal" id="caseDetailModal">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <h3 class="modal-title">프로젝트 상세</h3>
+                
+                <div class="project-flow">
+                    <div class="flow-item">
+                        <h4>문제</h4>
+                        <p id="modalProblem">오래된 디자인과 복잡한 구조</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <h4>솔루션</h4>
+                        <p id="modalSolution">모던 디자인과 직관적 UI</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <h4>결과</h4>
+                        <p id="modalResult">방문자 증가 및 브랜드 강화</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <div class="footer__content">
-                <div class="footer__logo">Chiro</div>
-                <p class="footer__text">홈페이지 리모델링의 새로운 기준을 만들어갑니다</p>
+            <div class="footer__main">
+                <!-- 좌측 - 브랜드 영역 -->
+                <div class="footer__brand">
+                    <div class="footer__logo">Chiro</div>
+                    <p class="footer__tagline">이루는 길의 시작점 CHIRO</p>
+                </div>
+                
+                <!-- 중앙 - 회사정보 영역 -->
+                <div class="footer__company">
+                    <h4>회사정보</h4>
+                    <div class="company-details">
+                        <p><strong>㈜치로디자인</strong></p>
+                        <p>대표: 최정원</p>
+                        <p>사업자등록번호: 123-45-67890</p>
+                        <p>통신판매업신고: 제2024-인천연수-1205호</p>
+                        <p>개인정보보호책임자: 최정원</p>
+                    </div>
+                </div>
+                
+                <!-- 우측 - 연락처 영역 -->
+                <div class="footer__contact">
+                    <h4>Contact</h4>
+                    <div class="contact-details">
+                        <p><strong>전화:</strong> 032-123-4567</p>
+                        <p><strong>이메일:</strong> hello@chiro-design.co.kr</p>
+                        <p><strong>주소:</strong> 인천광역시 연수구 컨벤시아대로 165<br>포스코타워-송도 12층 1205호</p>
+                    </div>
+                    <div class="operating-hours">
+                        <h5>운영시간</h5>
+                        <p>평일 09:00 - 18:00<br>(토/일/공휴일 휴무)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 하단바 - 법적고지/저작권 -->
+            <div class="footer__bottom">
+                <div class="footer__links">
+                    <a href="#">이용약관</a>
+                    <span class="divider">|</span>
+                    <a href="#">개인정보처리방침</a>
+                    <span class="divider">|</span>
+                    <a href="#">사업자정보확인</a>
+                </div>
+                <div class="footer__copyright">
+                    <p>Copyright 2024. Chiro Design Co., Ltd. All rights reserved.</p>
+                </div>
             </div>
         </div>
     </footer>

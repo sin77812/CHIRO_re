@@ -1,47 +1,52 @@
-// Portfolio Page JavaScript
+// Portfolio Page JavaScript - 애플식 미니멀 디자인
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Filter functionality
+    // 모든 초기화 함수 실행
     initializeFilters();
-    
-    // Before/After slider functionality
     initializeBeforeAfterSliders();
-    
-    // Demo button functionality
-    initializeDemoButtons();
+    initializeLiveDemoButtons();
+    initializeCaseDetailModals();
+    initializeScrollAnimations();
+    initializeHeroStats();
 });
 
-// Filter System
+// 필터링 시스템 (새로운 구조)
 function initializeFilters() {
-    const filterTags = document.querySelectorAll('.filter-tag');
+    const filterTabs = document.querySelectorAll('.filter-tab');
     const caseCards = document.querySelectorAll('.case-card');
     
-    filterTags.forEach(tag => {
-        tag.addEventListener('click', function() {
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
             const filter = this.getAttribute('data-filter');
             
-            // Update active filter tag
-            filterTags.forEach(t => t.classList.remove('filter-tag--active'));
-            this.classList.add('filter-tag--active');
+            // 활성 필터 탭 업데이트
+            filterTabs.forEach(t => t.classList.remove('filter-active'));
+            this.classList.add('filter-active');
             
-            // Filter case cards
+            // 케이스 카드 필터링
             caseCards.forEach(card => {
                 const category = card.getAttribute('data-category');
                 
                 if (filter === 'all' || category === filter) {
-                    card.classList.remove('hidden');
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, 100);
                 } else {
-                    card.classList.add('hidden');
+                    card.classList.remove('visible');
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
                 }
             });
             
-            // Smooth scroll to cases section after filtering
+            // 부드러운 스크롤
             setTimeout(() => {
-                document.querySelector('.portfolio-cases').scrollIntoView({
+                document.querySelector('.portfolio-content').scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
-            }, 100);
+            }, 150);
         });
     });
 }
@@ -118,98 +123,171 @@ function initializeBeforeAfterSliders() {
     });
 }
 
-// Demo Button Functionality
-function initializeDemoButtons() {
-    const demoButtons = document.querySelectorAll('.btn-demo');
+// Live Demo 버튼 기능
+function initializeLiveDemoButtons() {
+    const liveDemoButtons = document.querySelectorAll('.live-demo-btn');
     
-    demoButtons.forEach(button => {
+    liveDemoButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Check if button has specific demo URL
             const demoUrl = this.getAttribute('data-demo-url');
             
             if (demoUrl) {
-                // Add loading state
+                // 로딩 상태 추가
                 const originalText = this.textContent;
                 this.textContent = '사이트 열기 중...';
                 this.disabled = true;
+                this.style.opacity = '0.7';
                 
-                // Open the specific demo site
+                // 실제 데모 사이트 열기
                 window.open(demoUrl, '_blank');
                 
-                // Reset button after delay
+                // 버튼 상태 복원
                 setTimeout(() => {
                     this.textContent = originalText;
                     this.disabled = false;
-                }, 1000);
+                    this.style.opacity = '1';
+                }, 1500);
             } else {
-                // Fallback for other buttons
-                const caseCard = this.closest('.case-card');
-                const category = caseCard.getAttribute('data-category');
+                // 준비 중 메시지
+                const originalText = this.textContent;
+                this.textContent = '준비 중입니다';
+                this.style.opacity = '0.7';
                 
-                // Demo URLs for other categories
-                const demoUrls = {
-                    'manufacturing': 'https://example-manufacturing.com',
-                    'hospital': 'https://example-hospital.com',
-                    'lawyer': 'https://example-lawyer.com',
-                    'service': 'https://example-service.com'
-                };
-                
-                const fallbackUrl = demoUrls[category];
-                
-                if (fallbackUrl) {
-                    // Add loading state
-                    const originalText = this.textContent;
-                    this.textContent = '사이트 열기 중...';
-                    this.disabled = true;
-                    
-                    // Open in new tab
-                    window.open(fallbackUrl, '_blank');
-                    
-                    // Reset button after delay
-                    setTimeout(() => {
-                        this.textContent = originalText;
-                        this.disabled = false;
-                    }, 1000);
-                } else {
-                    // Show coming soon message
-                    this.textContent = '준비 중입니다';
-                    setTimeout(() => {
-                        this.textContent = '실제 사이트 보기';
-                    }, 2000);
-                }
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.opacity = '1';
+                }, 2000);
             }
         });
     });
 }
 
-// Intersection Observer for animations - Faster
-const observerOptions = {
-    threshold: 0.05, // Trigger earlier
-    rootMargin: '0px 0px -20px 0px' // Less margin
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+// 상세보기 모달 기능
+function initializeCaseDetailModals() {
+    const detailButtons = document.querySelectorAll('.case-detail-btn');
+    const modal = document.getElementById('caseDetailModal');
+    const modalOverlay = modal.querySelector('.modal-overlay');
+    const modalClose = modal.querySelector('.modal-close');
+    
+    // 케이스별 상세 정보
+    const caseDetails = {
+        'manufacturing': {
+            problem: '오래된 디자인과 복잡한 구조로 인한 낮은 사용자 경험',
+            solution: '모던한 UI/UX 디자인과 직관적인 네비게이션 구조',
+            result: '방문자 180% 증가, 문의율 240% 향상, 브랜드 신뢰도 대폭 개선'
+        },
+        'hospital': {
+            problem: '복잡한 온라인 예약 시스템과 환자 불편 증가',
+            solution: '간편한 원클릭 예약 시스템과 모바일 최적화',
+            result: '온라인 예약 150% 증가, 환자 만족도 85% 향상, 업무 효율성 개선'
+        },
+        'cafe': {
+            problem: '복잡한 메뉴 구조와 브랜드 아이덴티티 부족',
+            solution: 'NOC Coffee급 미니멀 디자인과 카테고리 필터링',
+            result: '브랜드 인지도 300% 향상, 메뉴 탐색 120% 개선, 완벽한 모바일 경험'
+        }
+    };
+    
+    detailButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const caseCard = this.closest('.case-card');
+            const category = caseCard.getAttribute('data-category');
+            const details = caseDetails[category];
+            
+            if (details) {
+                // 모달 내용 업데이트
+                document.getElementById('modalProblem').textContent = details.problem;
+                document.getElementById('modalSolution').textContent = details.solution;
+                document.getElementById('modalResult').textContent = details.result;
+                
+                // 모달 표시
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+    
+    // 모달 닫기 기능
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', closeModal);
+    
+    // ESC 키로 모달 닫기
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
         }
     });
-}, observerOptions);
+}
 
-// Observe all case cards for scroll animations - Faster transitions
-document.addEventListener('DOMContentLoaded', function() {
-    const caseCards = document.querySelectorAll('.case-card');
+// 스크롤 애니메이션 초기화
+function initializeScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
     
-    caseCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)'; // Smaller distance
-        card.style.transition = `all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.03}s`; // Faster
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+    
+    // 케이스 카드들에 관찰자 연결
+    const caseCards = document.querySelectorAll('.case-card');
+    caseCards.forEach(card => {
         observer.observe(card);
     });
-});
+}
 
-// Smooth scrolling for internal links
+// Hero 통계 애니메이션
+function initializeHeroStats() {
+    const stats = document.querySelectorAll('.hero-stat__number');
+    const animateNumbers = () => {
+        stats.forEach(stat => {
+            const target = parseInt(stat.textContent.replace(/[^\d]/g, ''));
+            const isPercentage = stat.textContent.includes('%');
+            let current = 0;
+            const increment = target / 60; // 60프레임
+            const duration = 2000; // 2초
+            const stepTime = duration / 60;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    stat.textContent = isPercentage ? `${target}%` : target;
+                    clearInterval(timer);
+                } else {
+                    const displayValue = Math.floor(current);
+                    stat.textContent = isPercentage ? `${displayValue}%` : displayValue;
+                }
+            }, stepTime);
+        });
+    };
+    
+    // Hero 섹션이 화면에 보일 때 애니메이션 시작
+    const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setTimeout(animateNumbers, 1000);
+                heroObserver.disconnect();
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    const heroStats = document.querySelector('.portfolio-hero__stats');
+    if (heroStats) {
+        heroObserver.observe(heroStats);
+    }
+}
+
+// 부드러운 스크롤 링크 처리
 document.addEventListener('click', function(e) {
     if (e.target.matches('a[href^="#"]')) {
         e.preventDefault();
@@ -223,26 +301,33 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Add loading animations
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
-});
-
-// Handle URL hash for direct filtering
+// URL 해시로 직접 필터링 처리
 window.addEventListener('load', function() {
     const hash = window.location.hash;
     const filterMap = {
         '#manufacturing': 'manufacturing',
-        '#hospital': 'hospital',
+        '#hospital': 'hospital', 
         '#cafe': 'cafe',
-        '#lawyer': 'lawyer',
         '#service': 'service'
     };
     
     if (filterMap[hash]) {
         const filterButton = document.querySelector(`[data-filter="${filterMap[hash]}"]`);
         if (filterButton) {
-            filterButton.click();
+            setTimeout(() => filterButton.click(), 500);
         }
     }
+});
+
+// 페이지 로드 완료 처리
+window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+    
+    // 초기 케이스 카드들을 visible로 설정
+    const caseCards = document.querySelectorAll('.case-card');
+    caseCards.forEach(card => {
+        setTimeout(() => {
+            card.classList.add('visible');
+        }, 100);
+    });
 });

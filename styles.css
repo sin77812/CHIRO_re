@@ -648,7 +648,6 @@ body {
     /* Disable all premium animations */
     .hero__background,
     .hero__title,
-    .morphing-word,
     .hero__cta,
     .portfolio-card,
     .floating-geometry,
@@ -1496,103 +1495,141 @@ body {
     transform: translateY(-2px);
 }
 
-/* Footer */
+/* Footer - 3단 레이아웃 */
 .footer {
     background-color: var(--primary-dark);
     border-top: 1px solid var(--border-dark);
-    padding: var(--spacing-xl) 0;
-    text-align: center;
+    padding: var(--spacing-xl) 0 var(--spacing-md);
 }
 
-.footer__logo {
-    font-size: 1.5rem;
+/* 메인 3단 컨테이너 */
+.footer__main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    align-items: start;
+}
+
+/* 좌측 - 브랜드 영역 */
+.footer__brand .footer__logo {
+    font-size: 2rem;
     font-weight: var(--font-weight-bold);
     color: var(--primary-green);
     margin-bottom: var(--spacing-sm);
+    background: linear-gradient(135deg, #1DB954, #1ed760);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.footer__text {
+.footer__tagline {
+    color: var(--text-light-gray);
+    font-size: 0.95rem;
+    font-weight: var(--font-weight-medium);
+    margin-top: var(--spacing-xs);
+}
+
+/* 중앙 - 회사정보 영역 */
+.footer__company h4 {
+    color: var(--accent-green);
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--border-dark);
+    padding-bottom: var(--spacing-xs);
+}
+
+.footer__company .company-details p {
     color: var(--text-light-gray);
     font-size: 0.9rem;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.6;
 }
 
-.footer__info {
-    display: grid;
-    gap: var(--spacing-md);
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: left;
+.footer__company .company-details p strong {
+    color: var(--primary-green);
+    font-weight: var(--font-weight-bold);
 }
 
-.footer__info .company-info,
-.footer__info .contact-details {
-    padding: var(--spacing-md);
-    background-color: var(--surface-dark);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-dark);
+/* 우측 - 연락처 영역 */
+.footer__contact h4 {
+    color: var(--accent-green);
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--border-dark);
+    padding-bottom: var(--spacing-xs);
 }
 
-.footer__info .company-info p,
-.footer__info .contact-details p {
+.footer__contact .contact-details p {
     color: var(--text-light-gray);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+.footer__contact .contact-details p strong {
+    color: var(--primary-green);
+    font-weight: var(--font-weight-medium);
+}
+
+.footer__contact .operating-hours {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-dark);
+}
+
+.footer__contact .operating-hours h5 {
+    color: var(--accent-green);
+    font-size: 0.95rem;
+    font-weight: var(--font-weight-bold);
     margin-bottom: var(--spacing-xs);
 }
 
-.footer__info .company-info p:last-child,
-.footer__info .contact-details p:last-child {
-    margin-bottom: 0;
+.footer__contact .operating-hours p {
+    color: var(--text-light-gray);
+    font-size: 0.85rem;
+    line-height: 1.5;
 }
 
-.footer__info .company-info p strong {
-    color: var(--primary-green);
+/* 하단바 */
+.footer__bottom {
+    border-top: 1px solid var(--border-dark);
+    padding-top: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
 }
 
-.footer-links {
-    text-align: center;
-    margin: var(--spacing-md) 0;
+.footer__links {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 
-.footer-links a {
+.footer__links a {
     color: var(--text-light-gray);
     text-decoration: none;
     font-size: 0.85rem;
     transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
+.footer__links a:hover {
     color: var(--primary-green);
 }
 
-.operating-hours {
-    text-align: center;
-    padding: var(--spacing-md);
-    background-color: var(--surface-dark);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-dark);
-    margin: var(--spacing-md) 0;
+.footer__links .divider {
+    color: var(--text-dark-gray);
+    margin: 0 var(--spacing-xs);
 }
 
-.operating-hours p {
-    color: var(--text-light-gray);
-    font-size: 0.9rem;
-}
-
-.operating-hours strong {
-    color: var(--accent-green);
-}
-
-.copyright {
-    text-align: center;
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--border-dark);
-    margin-top: var(--spacing-md);
-}
-
-.copyright p {
+.footer__copyright p {
     color: var(--text-dark-gray);
     font-size: 0.8rem;
+    margin: 0;
 }
 
 /* Responsive Design */
@@ -1627,6 +1664,38 @@ body {
     }
     
     /* 모바일에서는 순차적으로 위에서 아래로 */
+    
+    /* 푸터 모바일 레이아웃 */
+    .footer__main {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+    
+    .footer__brand .footer__logo {
+        font-size: 1.8rem;
+    }
+    
+    .footer__company h4,
+    .footer__contact h4 {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .footer__company .company-details p,
+    .footer__contact .contact-details p {
+        font-size: 0.85rem;
+    }
+    
+    .footer__bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .footer__links {
+        justify-content: center;
+    }
     .why-card[data-card-index="0"],
     .why-card[data-card-index="1"],
     .why-card[data-card-index="2"],
@@ -2003,14 +2072,13 @@ body {
     display: inline-block !important;
     min-width: 140px;
     text-align: center;
+    background: linear-gradient(135deg, #1DB954, #1ed760, #22ff6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(29, 185, 84, 0.3);
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform, opacity, filter;
-    background: linear-gradient(135deg, #1DB954 0%, #1ed760 50%, #22ff6b 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    background-clip: text !important;
-    text-shadow: 0 0 30px rgba(29, 185, 84, 0.3) !important;
-    filter: drop-shadow(0 0 10px rgba(29, 185, 84, 0.2));
+    filter: drop-shadow(0 0 15px rgba(29, 185, 84, 0.4));
 }
 
 .morphing-word.fade-out {
@@ -2025,14 +2093,16 @@ body {
     filter: blur(3px) drop-shadow(0 0 10px rgba(29, 185, 84, 0.2));
 }
 
+.hero__brand {
+    color: #1ed760;
+    font-weight: 800;
+    text-shadow: 0 0 15px rgba(30, 215, 96, 0.4);
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
     .morphing-word {
         transition: opacity 0.3s ease !important;
-    }
-    
-    .morphing-word.fade-out,
-    .morphing-word.fade-in {
         transform: none !important;
         filter: none !important;
     }
