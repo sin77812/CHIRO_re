@@ -718,77 +718,12 @@ body {
     font-weight: 300;
 }
 
-/* 섹션 구분선 - Hero 스타일 강화 */
+/* 섹션 구분선 - 미니멀 버전 */
 .section-divider {
-    height: 1px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(29, 185, 84, 0.2) 20%, 
-        rgba(29, 185, 84, 0.8) 50%, 
-        rgba(29, 185, 84, 0.2) 80%, 
-        transparent 100%
-    );
-    margin: 80px auto;
-    max-width: 80%;
-    position: relative;
-    overflow: hidden;
-}
-
-.section-divider::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(29, 185, 84, 0.1) 20%, 
-        rgba(30, 215, 96, 0.4) 50%, 
-        rgba(29, 185, 84, 0.1) 80%, 
-        transparent 100%
-    );
-    filter: blur(3px);
-    animation: dividerPulse 4s ease-in-out infinite;
-}
-
-.section-divider::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 8px;
-    height: 8px;
-    background: radial-gradient(circle, 
-        rgba(30, 215, 96, 0.8) 0%, 
-        rgba(29, 185, 84, 0.4) 50%, 
-        transparent 100%
-    );
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 
-        0 0 10px rgba(30, 215, 96, 0.5),
-        0 0 20px rgba(29, 185, 84, 0.3);
-    animation: dividerGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes dividerPulse {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 1; }
-}
-
-@keyframes dividerGlow {
-    0% { 
-        box-shadow: 
-            0 0 10px rgba(30, 215, 96, 0.5),
-            0 0 20px rgba(29, 185, 84, 0.3);
-    }
-    100% { 
-        box-shadow: 
-            0 0 15px rgba(30, 215, 96, 0.8),
-            0 0 30px rgba(29, 185, 84, 0.5),
-            0 0 45px rgba(29, 185, 84, 0.2);
-    }
+    width: 1px;
+    height: 80px;
+    background: rgba(29, 185, 84, 0.3);
+    margin: 0 auto;
 }
 
 /* Hero Section - 업데이트된 패딩 */
@@ -823,23 +758,120 @@ body {
 }
 
 /* Why Chiro Section - Hero DNA 확산 */
-.why-chiro {
-    padding: 100px 0;
-    background: 
-        linear-gradient(135deg, rgba(29, 185, 84, 0.12) 0%, transparent 40%),
-        linear-gradient(225deg, rgba(30, 215, 96, 0.08) 0%, transparent 40%),
-        linear-gradient(180deg,
-            rgba(8, 25, 12, 1) 0%,
-            rgba(12, 30, 15, 0.98) 30%,
-            rgba(15, 35, 18, 0.95) 70%,
-            rgba(10, 28, 13, 1) 100%);
+/* === 여백의 미 미니멀 디자인 시작 === */
+
+/* 미니멀 컨테이너 */
+.minimal-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* 미니멀 섹션 제목 */
+.minimal-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 300;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 100px;
+    letter-spacing: -0.02em;
     position: relative;
-    overflow: hidden;
-    border-top: 2px solid rgba(29, 185, 84, 0.4);
-    border-bottom: 2px solid rgba(29, 185, 84, 0.4);
-    box-shadow: 
-        inset 0 1px 0 rgba(29, 185, 84, 0.1),
-        inset 0 -1px 0 rgba(29, 185, 84, 0.1);
+}
+
+.minimal-title::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #1DB954;
+    margin: 20px auto 0;
+}
+
+/* Why Chiro - 여백의 미 미니멀 디자인 */
+.why-chiro-minimal {
+    padding: 200px 0;
+    background: #0a0a0a;
+}
+
+.minimal-grid {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.minimal-card {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.minimal-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1DB954;
+    margin-bottom: 12px;
+}
+
+.minimal-card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Our Impact - 숫자 중심 미니멀 */
+.impact-minimal {
+    padding: 200px 0;
+    background: #0a0a0a;
+}
+
+.numbers-grid {
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+    margin: 100px 0;
+}
+
+.number-item {
+    text-align: center;
+}
+
+.big-number {
+    font-size: clamp(4rem, 8vw, 6rem);
+    font-weight: 800;
+    color: #1DB954;
+    margin-bottom: 16px;
+    line-height: 1;
+}
+
+.number-label {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+    .minimal-grid {
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+    }
+    
+    .numbers-grid {
+        flex-direction: column;
+        gap: 60px;
+        align-items: center;
+    }
+    
+    .minimal-title {
+        margin-bottom: 60px;
+    }
+    
+    .why-chiro-minimal,
+    .impact-minimal {
+        padding: 120px 0;
+    }
 }
 
 .why-chiro::after {
