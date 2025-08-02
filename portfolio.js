@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeCaseDetailModals();
     initializeScrollAnimations();
     initializeHeroStats();
+    initializeLoadMore();
 });
 
 // 필터링 시스템 (새로운 구조)
@@ -23,7 +24,7 @@ function initializeFilters() {
             filterTabs.forEach(t => t.classList.remove('filter-active'));
             this.classList.add('filter-active');
             
-            // 케이스 카드 필터링
+            // 케이스 카드 필터링 (모든 그리드의 카드들 포함)
             caseCards.forEach(card => {
                 const category = card.getAttribute('data-category');
                 
@@ -39,6 +40,35 @@ function initializeFilters() {
                     }, 300);
                 }
             });
+            
+            // 필터링 시 더보기 버튼과 숨겨진 케이스들 관리
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const hiddenCases = document.getElementById('hiddenCases');
+            const visibleMainCards = document.querySelectorAll('#portfolioGrid .case-card:not([style*="display: none"])');
+            const visibleHiddenCards = document.querySelectorAll('#hiddenCases .case-card:not([style*="display: none"])');
+            
+            if (filter === 'all') {
+                // 전체 보기일 때는 원래 구조로 복원
+                if (hiddenCases.style.display === 'grid') {
+                    // 이미 더보기가 클릭된 상태라면 그대로 유지
+                    loadMoreBtn.style.display = 'none';
+                } else {
+                    // 처음 상태라면 더보기 버튼 보이기
+                    loadMoreBtn.style.display = 'block';
+                    hiddenCases.style.display = 'none';
+                }
+            } else {
+                // 특정 카테고리 필터링 시
+                if (visibleMainCards.length > 0 || visibleHiddenCards.length > 0) {
+                    // 해당 카테고리에 보여줄 항목이 있으면 숨겨진 케이스들도 표시
+                    hiddenCases.style.display = 'grid';
+                    loadMoreBtn.style.display = 'none';
+                } else {
+                    // 해당 카테고리에 항목이 없으면 숨기기
+                    hiddenCases.style.display = 'none';
+                    loadMoreBtn.style.display = 'none';
+                }
+            }
             
             // 부드러운 스크롤
             setTimeout(() => {
@@ -56,10 +86,16 @@ function initializeBeforeAfterSliders() {
     const sliders = document.querySelectorAll('.before-after-slider');
     
     sliders.forEach(slider => {
-        const container = slider.querySelector('.before-after-container');
+        const container = slider; // slider 자체가 container 역할
         const afterImage = slider.querySelector('.after-image');
         const handle = slider.querySelector('.slider-handle');
         let isDragging = false;
+        
+        // 요소가 존재하는지 확인
+        if (!afterImage || !handle) {
+            console.warn('Before/After slider elements not found');
+            return;
+        }
         
         // Mouse events
         handle.addEventListener('mousedown', startDrag);
@@ -82,6 +118,9 @@ function initializeBeforeAfterSliders() {
             
             const rect = container.getBoundingClientRect();
             const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            
+            if (!clientX) return; // 좌표가 없으면 리턴
+            
             const x = clientX - rect.left;
             const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
             
@@ -100,10 +139,10 @@ function initializeBeforeAfterSliders() {
         }
         
         // Click anywhere on slider to move handle
-        container.addEventListener('click', function(e) {
-            if (e.target === handle) return;
+        slider.addEventListener('click', function(e) {
+            if (e.target === handle || isDragging) return;
             
-            const rect = container.getBoundingClientRect();
+            const rect = slider.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
             
@@ -319,15 +358,54 @@ window.addEventListener('load', function() {
     }
 });
 
+// 더보기 기능
+function initializeLoadMore() {
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const hiddenCases = document.getElementById('hiddenCases');
+    
+    if (!loadMoreBtn || !hiddenCases) return;
+    
+    loadMoreBtn.addEventListener('click', function() {
+        // 숨겨진 케이스들 표시
+        hiddenCases.style.display = 'grid';
+        
+        // 애니메이션을 위해 약간 지연 후 visible 클래스 추가
+        setTimeout(() => {
+            const hiddenCards = hiddenCases.querySelectorAll('.case-card');
+            hiddenCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, index * 200);
+            });
+            
+            // Before/After 슬라이더 초기화 (새로운 카드들에 대해)
+            initializeBeforeAfterSliders();
+            initializeLiveDemoButtons();
+            initializeCaseDetailModals();
+        }, 100);
+        
+        // 버튼 숨기기
+        this.style.display = 'none';
+        
+        // 부드러운 스크롤
+        setTimeout(() => {
+            hiddenCases.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }, 300);
+    });
+}
+
 // 페이지 로드 완료 처리
 window.addEventListener('load', function() {
     document.body.classList.add('loaded');
     
-    // 초기 케이스 카드들을 visible로 설정
-    const caseCards = document.querySelectorAll('.case-card');
-    caseCards.forEach(card => {
+    // 초기 케이스 카드들을 visible로 설정 (첫 번째 그리드만)
+    const initialCards = document.querySelectorAll('#portfolioGrid .case-card');
+    initialCards.forEach((card, index) => {
         setTimeout(() => {
             card.classList.add('visible');
-        }, 100);
+        }, index * 200);
     });
 });

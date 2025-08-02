@@ -239,9 +239,16 @@
     padding: 100px 0;
 }
 
-/* 케이스 카드 (애플식 여백) */
+/* 포트폴리오 그리드 레이아웃 */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    margin-bottom: 60px;
+}
+
+/* 케이스 카드 (그리드 레이아웃용으로 수정) */
 .case-card {
-    margin-bottom: 200px; /* 카드 간 큰 여백 */
     padding: 0; /* 내부는 깔끔하게 */
     opacity: 0;
     transform: translateY(60px);
@@ -257,10 +264,10 @@
 .before-after-slider {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 300px; /* 크기 축소 */
     border-radius: 16px;
     overflow: hidden;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     cursor: col-resize;
 }
@@ -326,6 +333,39 @@
 
 .slider-handle:hover {
     background: #1ed760;
+}
+
+/* 더보기 버튼 */
+.load-more-container {
+    text-align: center;
+    margin: 80px 0;
+}
+
+.load-more-btn {
+    background: linear-gradient(135deg, #1DB954, #1ed760);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 30px rgba(29, 185, 84, 0.3);
+}
+
+.load-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(29, 185, 84, 0.4);
+}
+
+.load-more-btn:active {
+    transform: translateY(0);
+}
+
+/* 숨겨진 케이스들 */
+.hidden-cases {
+    margin-top: 40px;
 }
 
 .slider-handle:hover::before {
@@ -580,12 +620,13 @@
         padding: 0 1.5rem;
     }
     
-    .case-card {
-        margin-bottom: 120px; /* 모바일에서 카드 간격 축소 */
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* 모바일에서는 1열 */
+        gap: 30px;
     }
     
     .before-after-slider {
-        height: 300px; /* 모바일에서 높이 조정 */
+        height: 250px; /* 모바일에서 더 작게 */
         border-radius: 12px;
     }
     
@@ -661,8 +702,9 @@
         gap: 3rem;
     }
     
-    .case-card {
-        margin-bottom: 160px;
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* 태블릿에서는 1열 */
+        gap: 35px;
     }
 }
 
