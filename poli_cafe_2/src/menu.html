@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Menu - Urban Roastery</title>
+    <meta name="description" content="Urban Roastery의 모든 메뉴를 한눈에 보세요. 커피부터 디저트까지 26가지 시그니처 메뉴">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/menu-page.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><h1>Urban Roastery</h1></a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#beans">Beans</a>
+                <a href="menu.html" class="active">Menu</a>
+                <a href="index.html#gallery">Gallery</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Header -->
+    <section class="menu-header-section">
+        <div class="container">
+            <div class="menu-header">
+                <h1>All Menu</h1>
+                <p>Urban Roastery의 모든 음료와 디저트 | <span class="menu-count">총 26종</span></p>
+                <div class="menu-filters">
+                    <button class="filter active" data-category="all">전체</button>
+                    <button class="filter" data-category="coffee">커피</button>
+                    <button class="filter" data-category="signature">시그니처</button>
+                    <button class="filter" data-category="dessert">디저트</button>
+                    <button class="filter" data-category="seasonal">시즌한정</button>
+                    <button class="filter" data-category="tea">티</button>
+                </div>
+                <div class="menu-search-wrapper">
+                    <input type="text" class="menu-search" placeholder="메뉴명이나 키워드로 검색하세요">
+                    <button class="search-btn">🔍</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu List -->
+    <section class="menu-list-section">
+        <div class="container">
+            <div class="menu-grid" id="menuGrid">
+                <!-- Coffee -->
+                <div class="menu-card" data-category="coffee signature">
+                    <div class="menu-img">
+                        <div class="img-placeholder">허니 라떼</div>
+                    </div>
+                    <div class="menu-badges">
+                        <span class="badge signature">Signature</span>
+                        <span class="badge best">Best</span>
+                    </div>
+                    <h3>허니 라떼</h3>
+                    <p>은은한 아카시아 꿀과 고소한 에스프레소의 조화</p>
+                    <div class="menu-meta">
+                        <span class="price">₩5,900</span>
+                        <span class="bean">Colombia Supremo</span>
+                    </div>
+                    <button class="view-detail" onclick="openModal('honey-latte')">상세 보기</button>
+                    <div class="menu-detail">
+                        <ul>
+                            <li><strong>원두:</strong> Colombia Supremo</li>
+                            <li><strong>로스팅:</strong> 미디엄</li>
+                            <li><strong>노트:</strong> 카라멜, 너트, 플로럴</li>
+                            <li><strong>칼로리:</strong> 180kcal</li>
+                            <li><strong>추천 페어링:</strong> 수제 티라미수</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="coffee">
+                    <div class="menu-img">
+                        <div class="img-placeholder">아메리카노</div>
+                    </div>
+                    <div class="menu-badges">
+                        <span class="badge best">Best</span>
+                    </div>
+                    <h3>아메리카노</h3>
+                    <p>진한 바디감과 클린한 애프터테이스트</p>
+                    <div class="menu-meta">
+                        <span class="price">₩4,500</span>
+                        <span class="bean">Brazil Nova</span>
+                    </div>
+                    <button class="view-detail" onclick="openModal('americano')">상세 보기</button>
+                    <div class="menu-detail">
+                        <ul>
+                            <li><strong>원두:</strong> Brazil Nova</li>
+                            <li><strong>로스팅:</strong> 미디엄</li>
+                            <li><strong>노트:</strong> 초콜릿, 너트, 달콤함</li>
+                            <li><strong>칼로리:</strong> 8kcal</li>
+                            <li><strong>추천 페어링:</strong> 크루아상</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="coffee">
+                    <div class="menu-img">
+                        <div class="img-placeholder">플랫화이트</div>
+                    </div>
+                    <div class="menu-badges">
+                        <span class="badge new">New</span>
+                    </div>
+                    <h3>플랫화이트</h3>
+                    <p>벨벳 같은 질감, 두유 교체 가능</p>
+                    <div class="menu-meta">
+                        <span class="price">₩5,200</span>
+                        <span class="bean">Colombia Supremo</span>
+                    </div>
+                    <button class="view-detail" onclick="openModal('flat-white')">상세 보기</button>
+                    <div class="menu-detail">
+                        <ul>
+                            <li><strong>원두:</strong> Colombia Supremo</li>
+                            <li><strong>로스팅:</strong> 라이트</li>
+                            <li><strong>노트:</strong> 플로럴, 시트러스</li>
+                            <li><strong>칼로리:</strong> 120kcal</li>
+                            <li><strong>추천 페어링:</strong> 바닐라 스콘</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="seasonal signature">
+                    <div class="menu-img">
+                        <div class="img-placeholder">콜드브루 피치</div>
+                    </div>
+                    <div class="menu-badges">
+                        <span class="badge seasonal">Seasonal</span>
+                    </div>
+                    <h3>콜드브루 피치</h3>
+                    <p>복숭아와 콜드브루의 달콤상큼한 만남</p>
+                    <div class="menu-meta">
+                        <span class="price">₩6,500</span>
+                        <span class="bean">Ethiopia Yirgacheffe</span>
+                    </div>
+                    <button class="view-detail" onclick="openModal('coldbrew-peach')">상세 보기</button>
+                    <div class="menu-detail">
+                        <ul>
+                            <li><strong>원두:</strong> Ethiopia Yirgacheffe</li>
+                            <li><strong>로스팅:</strong> 라이트</li>
+                            <li><strong>노트:</strong> 플로럴, 베리, 복숭아</li>
+                            <li><strong>칼로리:</strong> 45kcal</li>
+                            <li><strong>추천 페어링:</strong> 마카롱</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="coffee">
+                    <div class="menu-img">
+                        <div class="img-placeholder">라떼</div>
+                    </div>
+                    <h3>라떼</h3>
+                    <p>깊고 진한 에스프레소에 부드러운 우유</p>
+                    <div class="menu-meta">
+                        <span class="price">₩5,000</span>
+                        <span class="bean">Colombia Supremo</span>
+                    </div>
+                    <button class="view-detail" onclick="openModal('latte')">상세 보기</button>
+                    <div class="menu-detail">
+                        <ul>
+                            <li><strong>원두:</strong> Colombia Supremo</li>
+                            <li><strong>로스팅:</strong> 미디엄</li>
+                            <li><strong>노트:</strong> 카라멜, 스톤프룻</li>
+                            <li><strong>칼로리:</strong> 150kcal</li>
+                            <li><strong>추천 페어링:</strong> 쿠키</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="coffee">
+                    <div class="menu-img">
+                        <div class="img-placeholder">핸드드립</div>
+                    </div>
+                    <h3>핸드드립</h3>
+                    <p>에티오피아 싱글 오리진의 풍미를 담은 브루잉</p>
+                    <div class="menu-meta">
+                        <span class="price">₩6,000</span>
+                        <span class="bean">Ethiopia Yirgacheffe</span>
+                    </div>
+                    <button class="view-detail" onclick="openModal('pour-over')">상세 보기</button>
+                    <div class="menu-detail">
+                        <ul>
+                            <li><strong>원두:</strong> Ethiopia Yirgacheffe</li>
+                            <li><strong>로스팅:</strong> 라이트</li>
+                            <li><strong>노트:</strong> 플로럴, 베리, 시트러스</li>
+                            <li><strong>칼로리:</strong> 5kcal</li>
+                            <li><strong>추천 페어링:</strong> 다크 초콜릿</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Dessert -->
+                <div class="menu-card" data-category="dessert">
+                    <div class="menu-img">
+                        <div class="img-placeholder">수제 티라미수</div>
+                    </div>
+                    <div class="menu-badges">
+                        <span class="badge best">Best</span>
+                    </div>
+                    <h3>수제 티라미수</h3>
+                    <p>이탈리안 마스카포네와 홈메이드 커피 시럽</p>
+                    <div class="menu-meta">
+                        <span class="price">₩7,000</span>
+                    </div>
+                    <button class="view-detail" onclick="openModal('tiramisu')">상세 보기</button>
+                    <div class="menu-detail">
+                        <ul>
+                            <li><strong>재료:</strong> 마스카포네, 레이디핑거</li>
+                            <li><strong>특징:</strong> 홈메이드 커피 시럽</li>
+                            <li><strong>칼로리:</strong> 310kcal</li>
+                            <li><strong>추천 페어링:</strong> 에스프레소</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="dessert">
+                    <div class="menu-img">
+                        <div class="img-placeholder">크루아상</div>
+                    </div>
+                    <h3>버터 크루아상</h3>
+                    <p>바삭한 겉면과 부드러운 속살의 프랑스식 크루아상</p>
+                    <div class="menu-meta">
+                        <span class="price">₩3,800</span>
+                    </div>
+                    <button class="view-detail" onclick="openModal('croissant')">상세 보기</button>
+                    <div class="menu-detail">
+                        <ul>
+                            <li><strong>특징:</strong> 프랑스 버터 사용</li>
+                            <li><strong>칼로리:</strong> 280kcal</li>
+                            <li><strong>추천 페어링:</strong> 아메리카노</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tea -->
+                <div class="menu-card" data-category="tea">
+                    <div class="menu-img">
+                        <div class="img-placeholder">얼그레이 티</div>
+                    </div>
+                    <div class="menu-badges">
+                        <span class="badge vegan">Vegan</span>
+                    </div>
+                    <h3>얼그레이 티</h3>
+                    <p>진한 잎차와 은은한 베르가못 향</p>
+                    <div class="menu-meta">
+                        <span class="price">₩4,800</span>
+                    </div>
+                    <button class="view-detail" onclick="openModal('earl-grey')">상세 보기</button>
+                    <div class="menu-detail">
+                        <ul>
+                            <li><strong>종류:</strong> 블랙 티</li>
+                            <li><strong>특징:</strong> 베르가못 오일</li>
+                            <li><strong>칼로리:</strong> 0kcal</li>
+                            <li><strong>추천 페어링:</strong> 스콘</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <h3>검색 결과가 없습니다</h3>
+                <p>다른 키워드로 검색해보세요.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Detail Modal -->
+    <div id="menuModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Urban Roastery</h3>
+                    <p>Specialty in Every Sip.</p>
+                </div>
+                <div class="footer-info">
+                    <p>© 2024 Urban Roastery. All rights reserved.</p>
+                    <p>성수점: 서울시 성동구 성수이로 123 | 강남점: 서울시 강남구 테헤란로 789</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/menu-page.js"></script>
+</body>
+</html>
